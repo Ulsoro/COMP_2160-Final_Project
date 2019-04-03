@@ -26,36 +26,42 @@
 
             <Button
                 android:id="@+id/mainGlucoseButton"
+                style="@style/Widget.AppCompat.Button.Borderless"
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
                 android:text="Glucose" />
 
             <Button
                 android:id="@+id/mainPressureButton"
+                style="@style/Widget.AppCompat.Button.Borderless"
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
                 android:text="Pressure" />
 
             <Button
                 android:id="@+id/mainA1CButton"
+                style="@style/Widget.AppCompat.Button.Borderless"
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
                 android:text="A1C" />
 
             <Button
                 android:id="@+id/mainMedicationButton"
+                style="@style/Widget.AppCompat.Button.Borderless"
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
                 android:text="Medication" />
 
             <Button
                 android:id="@+id/mainContactButton"
+                style="@style/Widget.AppCompat.Button.Borderless"
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
                 android:text="Contacts" />
 
             <Button
                 android:id="@+id/mainStatsButton"
+                style="@style/Widget.AppCompat.Button.Borderless"
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
                 android:text="Statistics" />

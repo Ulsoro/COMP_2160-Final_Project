@@ -10,9 +10,9 @@
         android:id="@+id/menuScrollView"
         android:layout_width="0dp"
         android:layout_height="0dp"
-        android:layout_marginEnd="8dp"
         android:layout_marginStart="8dp"
         android:layout_marginTop="8dp"
+        android:layout_marginEnd="8dp"
         app:layout_constraintBottom_toTopOf="@+id/guideline"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintStart_toStartOf="parent"
@@ -26,40 +26,45 @@
 
             <Button
                 android:id="@+id/mainGlucoseButton"
+                style="@style/Widget.AppCompat.Button.Borderless"
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
                 android:text="Glucose" />
 
             <Button
                 android:id="@+id/mainPressureButton"
+                style="@style/Widget.AppCompat.Button.Borderless"
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
                 android:text="Pressure" />
 
             <Button
                 android:id="@+id/mainA1CButton"
+                style="@style/Widget.AppCompat.Button.Borderless"
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
                 android:text="A1C" />
 
             <Button
                 android:id="@+id/mainMedicationButton"
+                style="@style/Widget.AppCompat.Button.Borderless"
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
                 android:text="Medication" />
 
             <Button
                 android:id="@+id/mainContactButton"
+                style="@style/Widget.AppCompat.Button.Borderless"
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
                 android:text="Contacts" />
 
             <Button
                 android:id="@+id/mainStatsButton"
+                style="@style/Widget.AppCompat.Button.Borderless"
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
                 android:text="Statistics" />
-
 
 
         </LinearLayout>
@@ -93,9 +98,11 @@
         android:layout_above="@id/mainRecycler"
         android:layout_gravity="end|bottom"
         android:layout_margin="16dp"
-        android:layout_marginBottom="8dp"
         android:layout_marginEnd="8dp"
+        android:layout_marginBottom="8dp"
         android:src="@android:drawable/ic_input_add"
+        app:backgroundTint="@color/colorPrimaryDark"
+        app:fabSize="normal"
         app:layout_constraintBottom_toBottomOf="@+id/mainRecycler"
         app:layout_constraintEnd_toEndOf="@+id/mainRecycler" />
 
