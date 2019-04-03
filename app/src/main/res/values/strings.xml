@@ -1,0 +1,57 @@
+<resources>
+    <string name="app_name">GlucoTrack</string>
+
+    <!-- Blood Glucose Entries -->
+    <string name="editBloodGlucose">Add/Edit Blood Glucose</string>
+    <string name="bloodSugarLabel">Sugar Concentration: </string>
+    <string name="bloodSugarUnits">mmol/L</string>
+    <string name="relativeTimeMeasured">Relative Time Measured:</string>
+    <string name="dateAndTime">Date and Time</string>
+    <string name="notesLabel">Notes:</string>
+
+    <string-array name="relativeTimeTags">
+        <item>Before Breakfast</item>
+        <item>After Breakfast</item>
+        <item>Before Lunch</item>
+        <item>After Lunch</item>
+        <item>Before Dinner</item>
+        <item>After Dinner</item>
+        <item>Before Sleep</item>
+        <item>Fasting</item>
+        <item>Other</item>
+    </string-array>
+
+
+    <!-- Blood Pressure Entries -->
+    <string name="systolicPressureLabel">Systolic Pressure:</string>
+    <string name="diastolicPressureLabel">Diastolic Pressure:</string>
+    <string name="bloodPressureUnits">mm Hg</string>
+    <string name="armMeasured">Arm Measured:</string>
+
+    <string-array name="measuredArm">
+        <item>Left</item>
+        <item>Right</item>
+    </string-array>
+
+    <!-- A1C Entries -->
+    <string name="averageSugarLabel">Average Sugar Concentration</string>
+    <string name="percentlabel">%</string>
+
+
+    <!-- Medication Entries -->
+    <string name="medicationNameLabel">Name of Medication:</string>
+    <string name="dosageLabel">Dosage:</string>
+    <string name="amountDispensed">Amount Dispensed:</string>
+    <string name="refillsLabel">Refills:</string>
+    <string name="perscribingDoctor">Perscribing Doctor</string>
+
+
+    <!-- Medical Contact information Entries -->
+    <string name="lastNameLabel">Last Name:</string>
+    <string name="firstNameLabel">First Name</string>
+    <string name="medicalRoleLabel">Medical Role:</string>
+    <string name="contactInformationLabel">Contact Information:</string>
+    <string name="title_activity_test">test</string>
+
+
+</resources>
