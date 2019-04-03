@@ -1,6 +1,14 @@
 <resources>
     <string name="app_name">GlucoTrack</string>
 
+    <!-- Menu Strings -->
+    <string name="Glucose">GLUCOSE</string>
+    <string name="Pressure">PRESSURE</string>
+    <string name="A1C">A1C</string>
+    <string name="Medication">MEDICATION</string>
+    <string name="Contacts">CONTACTS</string>
+    <string name="Statistics">STATISTICS</string>
+
     <!-- Blood Glucose Entries -->
     <string name="editBloodGlucose">Add/Edit Blood Glucose</string>
     <string name="bloodSugarLabel">Sugar Concentration: </string>
