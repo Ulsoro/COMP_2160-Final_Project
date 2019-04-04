@@ -1,6 +1,5 @@
 package osborne.william.glucotrak;
 
-import android.content.Context;
 import android.support.annotation.NonNull;
 import android.support.v7.widget.RecyclerView;
 import android.view.LayoutInflater;
@@ -10,7 +9,6 @@ import android.widget.TextView;
 
 import java.text.DateFormat;
 import java.text.SimpleDateFormat;
-import java.util.Calendar;
 import java.util.Date;
 import java.util.List;
 
@@ -34,7 +32,7 @@ public class BloodGlucoseAdapter extends RecyclerView.Adapter<BloodGlucoseAdapte
     @Override
     public void onBindViewHolder(@NonNull BloodGlucoseAdapter.ViewHolder viewHolder, int position) {
 
-        DateFormat simple = new SimpleDateFormat("dd MMM yyyy HH:mm:ss");
+        DateFormat simple = new SimpleDateFormat("dd MMM yyyy hh:mm:ss a");
 
         // Creating date from milliseconds
         // using Date() constructor
