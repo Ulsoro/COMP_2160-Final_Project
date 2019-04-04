@@ -1,19 +1,14 @@
 package osborne.william.glucotrak;
 
-import android.app.DatePickerDialog;
-import android.app.TimePickerDialog;
 import android.arch.persistence.room.Room;
 import android.os.Bundle;
 import android.support.v7.app.AppCompatActivity;
-import android.util.Log;
 import android.view.View;
-import android.widget.DatePicker;
 import android.widget.EditText;
 import android.widget.ImageButton;
 import android.widget.Spinner;
-import android.widget.TimePicker;
-
-import java.util.Calendar;
+import android.widget.TextView;
+import android.widget.Toast;
 
 public class EditBloodGlucose extends AppCompatActivity {
 
@@ -22,11 +17,11 @@ public class EditBloodGlucose extends AppCompatActivity {
 
     EditText bgConcentration;
     Spinner bgRelTime;
-    EditText bgDate;
-    EditText bgTime;
+    TextView bgDate;
+    TextView bgTime;
     EditText bgNote;
 
-    Calendar date;
+
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -38,16 +33,20 @@ public class EditBloodGlucose extends AppCompatActivity {
 
         bgConcentration = (EditText) findViewById(R.id.bgConcentrationEditText);
         bgRelTime = (Spinner) findViewById(R.id.bgRelativeTimeMeasuredSpinner);
-        bgDate = (EditText) findViewById(R.id.bgDateEditText);
-        bgTime = (EditText) findViewById(R.id.bgTimeEditText);
+        bgDate = (TextView) findViewById(R.id.bgDateTextView);
+        bgTime = (TextView) findViewById(R.id.bgTimeTextView);
         bgNote = (EditText) findViewById(R.id.bgNotesEditText);
+
+
+
 
 
         bgDate.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
 
-                showDateTimePicker();
+                Toast toast = Toast.makeText(getApplicationContext(), "WOO", Toast.LENGTH_LONG);
+                toast.show();
 
             }
         });
@@ -91,23 +90,4 @@ public class EditBloodGlucose extends AppCompatActivity {
 
     }
 
-    public void showDateTimePicker() {
-        final Calendar currentDate = Calendar.getInstance();
-        date = Calendar.getInstance();
-        new DatePickerDialog(getApplicationContext(), new DatePickerDialog.OnDateSetListener() {
-            @Override
-            public void onDateSet(DatePicker view, int year, int monthOfYear, int dayOfMonth) {
-                date.set(year, monthOfYear, dayOfMonth);
-                new TimePickerDialog(getApplicationContext(), new TimePickerDialog.OnTimeSetListener() {
-                    @Override
-                    public void onTimeSet(TimePicker view, int hourOfDay, int minute) {
-                        date.set(Calendar.HOUR_OF_DAY, hourOfDay);
-                        date.set(Calendar.MINUTE, minute);
-                        Log.v("EDIT BG", "The choosen one " + date.getTime());
-                    }
-                }, currentDate.get(Calendar.HOUR_OF_DAY), currentDate.get(Calendar.MINUTE), false).show();
-            }
-        }, currentDate.get(Calendar.YEAR), currentDate.get(Calendar.MONTH), currentDate.get(Calendar.DATE)).show();
-        bgDate.setText(currentDate.toString());
-    }
 }

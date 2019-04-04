@@ -71,8 +71,8 @@
         app:layout_constraintStart_toStartOf="@+id/relativeTimeLabelTextView"
         app:layout_constraintTop_toTopOf="@+id/guideline5" />
 
-    <EditText
-        android:id="@+id/bgDateEditText"
+    <TextView
+        android:id="@+id/bgDateTextView"
         android:layout_width="130dp"
         android:layout_height="wrap_content"
         android:layout_marginStart="8dp"
@@ -84,8 +84,8 @@
         app:layout_constraintStart_toStartOf="@+id/guideline3"
         app:layout_constraintTop_toBottomOf="@+id/dateTimeLabelTextView" />
 
-    <EditText
-        android:id="@+id/bgTimeEditText"
+    <TextView
+        android:id="@+id/bgTimeTextView"
         android:layout_width="129dp"
         android:layout_height="wrap_content"
         android:layout_marginStart="8dp"
@@ -93,11 +93,11 @@
         android:layout_marginEnd="8dp"
         android:ems="10"
         android:inputType="time"
-        app:layout_constraintBottom_toBottomOf="@+id/bgDateEditText"
+        app:layout_constraintBottom_toBottomOf="@+id/bgDateTextView"
         app:layout_constraintEnd_toStartOf="@+id/guideline2"
         app:layout_constraintHorizontal_bias="0.6"
-        app:layout_constraintStart_toEndOf="@+id/bgDateEditText"
-        app:layout_constraintTop_toTopOf="@+id/bgDateEditText"
+        app:layout_constraintStart_toEndOf="@+id/bgDateTextView"
+        app:layout_constraintTop_toTopOf="@+id/bgDateTextView"
         app:layout_constraintVertical_bias="1.0" />
 
     <TextView
@@ -207,5 +207,6 @@
         app:layout_constraintEnd_toStartOf="@+id/guideline2"
         app:layout_constraintStart_toStartOf="@+id/guideline3"
         app:layout_constraintTop_toTopOf="parent" />
+
 
 </android.support.constraint.ConstraintLayout>
