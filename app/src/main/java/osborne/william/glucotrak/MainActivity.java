@@ -1,26 +1,26 @@
 package osborne.william.glucotrak;
 
-import android.arch.persistence.room.Room;
+import android.arch.lifecycle.Observer;
+import android.arch.lifecycle.ViewModelProviders;
 import android.content.Intent;
+import android.os.Bundle;
 import android.support.annotation.Nullable;
 import android.support.design.widget.FloatingActionButton;
-import android.support.design.widget.Snackbar;
 import android.support.v7.app.AppCompatActivity;
-import android.os.Bundle;
 import android.support.v7.widget.LinearLayoutManager;
 import android.support.v7.widget.RecyclerView;
-import android.util.Log;
 import android.view.View;
-import android.widget.Toast;
 
 import java.util.List;
 
 public class MainActivity extends AppCompatActivity {
 
-    RecyclerView recyclerView;
-    RecyclerView.Adapter adapter;
+    private RecyclerView recyclerView;
+    private RecyclerView.Adapter adapter;
 
-    FloatingActionButton fab;
+    private FloatingActionButton fab;
+
+    private BloodGlucoseViewModel bloodGlucoseViewModel;
 
 
     @Override
@@ -37,6 +37,22 @@ public class MainActivity extends AppCompatActivity {
             }
         });
 
+        recyclerView = findViewById(R.id.mainRecycler);
+        final BloodGlucoseAdapter adapter = new BloodGlucoseAdapter(this);
+        recyclerView.setAdapter(adapter);
+        recyclerView.setLayoutManager(new LinearLayoutManager(this));
+
+        bloodGlucoseViewModel = ViewModelProviders.of(this).get(BloodGlucoseViewModel.class);
+
+        bloodGlucoseViewModel.getAllRecords().observe(this, new Observer<List<BloodGlucoseRecord>>() {
+            @Override
+            public void onChanged(@Nullable List<BloodGlucoseRecord> bloodGlucoseRecords) {
+                adapter.setBloodGlucose(bloodGlucoseRecords);
+            }
+        });
+
+
+        /*
         BloodGlucoseDAO bgDao;
 
         recyclerView = findViewById(R.id.mainRecycler);
@@ -63,6 +79,7 @@ public class MainActivity extends AppCompatActivity {
         for (int i = 0; i < bgRecords.size(); i++) {
             Log.d("BG", "" + bgRecords.get(i).toString());
         }
+        */
 
     }
 

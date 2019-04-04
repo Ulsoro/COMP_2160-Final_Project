@@ -37,10 +37,6 @@ public class EditBloodGlucose extends AppCompatActivity {
         bgTime = (TextView) findViewById(R.id.bgTimeTextView);
         bgNote = (EditText) findViewById(R.id.bgNotesEditText);
 
-
-
-
-
         bgDate.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
@@ -50,12 +46,6 @@ public class EditBloodGlucose extends AppCompatActivity {
 
             }
         });
-
-
-
-
-
-
 
         cancelButton.setOnClickListener(new View.OnClickListener() {
             @Override
@@ -86,8 +76,5 @@ public class EditBloodGlucose extends AppCompatActivity {
                 finish();
             }
         });
-
-
     }
-
 }

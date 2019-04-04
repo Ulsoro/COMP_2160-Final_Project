@@ -18,6 +18,8 @@ public interface BloodGlucoseDAO {
     void deleteAll();
 
     @Query("SELECT * FROM BloodGlucoseTable")
-    // LiveData<List<BloodGlucoseRecord>> getAllRecords();
-    List<BloodGlucoseRecord> getAllRecords();
+    LiveData<List<BloodGlucoseRecord>> getAllRecords();
+
+
+
 }

@@ -10,20 +10,17 @@ public class BloodGlucoseViewModel extends AndroidViewModel {
 
     private BloodGlucoseRepository mRepository;
 
-    //private LiveData<List<BloodGlucoseRecord>> mBloodGlucoseRecords;
-    private List<BloodGlucoseRecord> mBloodGlucoseRecords;
-
+    private LiveData<List<BloodGlucoseRecord>> mallBloodGlucoseRecords;
 
     public BloodGlucoseViewModel (Application application) {
         super(application);
         mRepository = new BloodGlucoseRepository(application);
-        mBloodGlucoseRecords = mRepository.getAllRecords();
+        mallBloodGlucoseRecords = mRepository.getAllRecords();
     }
 
-    // LiveData<List<BloodGlucoseRecord>>
-    List<BloodGlucoseRecord> getAllRecords() {
+    LiveData<List<BloodGlucoseRecord>> getAllRecords() {
 
-        return mBloodGlucoseRecords;
+        return mallBloodGlucoseRecords;
     }
 
     public void insert(BloodGlucoseRecord bloodGlucoseRecord) {

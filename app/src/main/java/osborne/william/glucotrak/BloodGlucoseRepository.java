@@ -9,16 +9,16 @@ import java.util.List;
 public class BloodGlucoseRepository {
 
     private BloodGlucoseDAO bloodGlucoseDAO;
-    //private LiveData<List<BloodGlucoseRecord>> glucoseRecords;
-    private List<BloodGlucoseRecord> glucoseRecords;
+    private LiveData<List<BloodGlucoseRecord>> glucoseRecords;
+
 
     BloodGlucoseRepository(Application application) {
         BloodGlucoseRoomDatabase db = BloodGlucoseRoomDatabase.getDatabase(application);
         bloodGlucoseDAO = db.bloodGlucoseDAO();
         glucoseRecords = bloodGlucoseDAO.getAllRecords();
     }
-    //LiveData<List<BloodGlucoseRecord>>
-    List<BloodGlucoseRecord> getAllRecords() {
+
+    LiveData<List<BloodGlucoseRecord>> getAllRecords() {
         return glucoseRecords;
     }
 

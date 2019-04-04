@@ -3,13 +3,15 @@ package osborne.william.glucotrak;
 import android.arch.persistence.room.ColumnInfo;
 import android.arch.persistence.room.Entity;
 import android.arch.persistence.room.PrimaryKey;
-import android.support.annotation.NonNull;
 
 @Entity(tableName = "BloodGlucoseTable")
 public class BloodGlucoseRecord {
 
     // Date and Time in Milliseconds
     @PrimaryKey
+    @ColumnInfo(name = "id")
+    public Long id;
+
     @ColumnInfo(name = "date")
     public Long date;
 
@@ -33,11 +35,27 @@ public class BloodGlucoseRecord {
     }
 
     // Getters and Setters
+    public Long getId() {
+        return id;
+    }
+
+    public void setId(Long id) {
+        this.id = id;
+    }
+
+    public Long getDate() {
+        return date;
+    }
+
+    public void setDate(Long date) {
+        this.date = date;
+    }
+
     public double getBloodSugarConcentration() {
         return bloodSugarConcentration;
     }
 
-    public void setBloodSugarConcentration(float bloodSugarConcentration) {
+    public void setBloodSugarConcentration(double bloodSugarConcentration) {
         this.bloodSugarConcentration = bloodSugarConcentration;
     }
 
@@ -47,14 +65,6 @@ public class BloodGlucoseRecord {
 
     public void setRelativeTime(String relativeTime) {
         this.relativeTime = relativeTime;
-    }
-
-    public Long getDateTime() {
-        return date;
-    }
-
-    public void setDateTime(Long dateTime) {
-        this.date = dateTime;
     }
 
     public String getNotes() {
