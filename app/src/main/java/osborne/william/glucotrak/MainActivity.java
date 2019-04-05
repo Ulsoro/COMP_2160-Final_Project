@@ -16,7 +16,6 @@ import java.util.List;
 public class MainActivity extends AppCompatActivity {
 
     private RecyclerView recyclerView;
-    private RecyclerView.Adapter adapter;
 
     private FloatingActionButton fab;
 
@@ -33,7 +32,7 @@ public class MainActivity extends AppCompatActivity {
         fab.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
-                startActivityForResult(new Intent(MainActivity.this, EditBloodGlucose.class), 1);
+                 startActivity(new Intent(MainActivity.this, EditBloodGlucoseActivity.class));
             }
         });
 
@@ -51,48 +50,7 @@ public class MainActivity extends AppCompatActivity {
             }
         });
 
-        // bloodGlucoseViewModel.insert(new BloodGlucoseRecord(System.currentTimeMillis(), 11.2, "Before Breakfast", ""));
-        // bloodGlucoseViewModel.insert(new BloodGlucoseRecord(System.currentTimeMillis(), 8.4, "Before Sleep", ""));
-
-        /*
-        BloodGlucoseDAO bgDao;
-
-        recyclerView = findViewById(R.id.mainRecycler);
-
-        BloodGlucoseRoomDatabase db = Room.databaseBuilder(getApplicationContext(), BloodGlucoseRoomDatabase.class, "bgData")
-                .allowMainThreadQueries()  // TODO: DO NOT ALLOW MAIN THREAD QUERIES!
-                .build();
-
-        bgDao = db.bloodGlucoseDAO();
-
-        // bgDao.deleteAll();
-        //bgDao.insert(new BloodGlucoseRecord(System.currentTimeMillis(), 11.2, "Before Bed", ""));
-        //bgDao.insert(new BloodGlucoseRecord((long)4, 5.2, "Breakfast", ""));
-
-        // bgDao.insert(new BloodGlucoseRecord(System.currentTimeMillis(), 6.6, "Before Lunch", "A Curious Note."));
-
-        List<BloodGlucoseRecord> bgRecords = db.bloodGlucoseDAO().getAllRecords();
-
-        recyclerView.setLayoutManager(new LinearLayoutManager(this));
-        adapter = new BloodGlucoseAdapter(bgRecords);
-        recyclerView.setAdapter(adapter);
-
-
-        for (int i = 0; i < bgRecords.size(); i++) {
-            Log.d("BG", "" + bgRecords.get(i).toString());
-        }
-        */
-
-    }
-
-
-    @Override
-    protected void onActivityResult(int requestCode, int resultCode, @Nullable Intent data) {
-        super.onActivityResult(requestCode, resultCode, data);
-
-        if (resultCode == 1) {
-            recyclerView.setAdapter(adapter);
-
-        }
+        //bloodGlucoseViewModel.insert(new BloodGlucoseRecord(System.currentTimeMillis(), 11.2, "Before Breakfast", ""));
+        //bloodGlucoseViewModel.insert(new BloodGlucoseRecord(System.currentTimeMillis(), 8.4, "Before Sleep", ""));
     }
 }

@@ -2,6 +2,7 @@ package osborne.william.glucotrak;
 
 import android.arch.persistence.room.ColumnInfo;
 import android.arch.persistence.room.Entity;
+import android.arch.persistence.room.Ignore;
 import android.arch.persistence.room.PrimaryKey;
 
 @Entity(tableName = "BloodGlucoseTable")
@@ -27,7 +28,18 @@ public class BloodGlucoseRecord {
     @ColumnInfo(name = "notes")
     public String notes;
 
+    // Constructor for new object
     public BloodGlucoseRecord(Long date, double bloodSugarConcentration, String relativeTime, String notes) {
+        this.date = date;
+        this.bloodSugarConcentration = bloodSugarConcentration;
+        this.relativeTime = relativeTime;
+        this.notes = notes;
+    }
+
+    // Constructor with ID - for use when over-writing existing records
+    @Ignore  // Room should ignore this for auto-generation
+    public BloodGlucoseRecord(Long id, Long date, double bloodSugarConcentration, String relativeTime, String notes) {
+        this.id = id;
         this.date = date;
         this.bloodSugarConcentration = bloodSugarConcentration;
         this.relativeTime = relativeTime;

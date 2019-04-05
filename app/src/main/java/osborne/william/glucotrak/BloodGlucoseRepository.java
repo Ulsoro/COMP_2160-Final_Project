@@ -10,14 +10,14 @@ public class BloodGlucoseRepository {
 
     private BloodGlucoseDAO bloodGlucoseDAO;
     private LiveData<List<BloodGlucoseRecord>> glucoseRecords;
-    private List<BloodGlucoseRecord> glucoseRecordList;
+    //private List<BloodGlucoseRecord> glucoseRecordList;
 
 
     BloodGlucoseRepository(Application application) {
         BloodGlucoseRoomDatabase db = BloodGlucoseRoomDatabase.getDatabase(application);
         bloodGlucoseDAO = db.bloodGlucoseDAO();
         glucoseRecords = bloodGlucoseDAO.getAllRecords();
-        glucoseRecordList = bloodGlucoseDAO.getAllRecordList();
+        //glucoseRecordList = bloodGlucoseDAO.getAllRecordList();
     }
 
     // Live Data wrapped around list for recyclerviews
@@ -26,12 +26,11 @@ public class BloodGlucoseRepository {
     }
 
     // Raw list available if needed
-    List<BloodGlucoseRecord> getAllRecordList() { return glucoseRecordList; }
+    //List<BloodGlucoseRecord> getAllRecordList() { return glucoseRecordList; }
 
     public void insert(BloodGlucoseRecord bloodGlucoseRecord) {
         new insertAsyncTask(bloodGlucoseDAO).execute(bloodGlucoseRecord);
     }
-
 
 
     private static class insertAsyncTask extends AsyncTask<BloodGlucoseRecord, Void, Void> {

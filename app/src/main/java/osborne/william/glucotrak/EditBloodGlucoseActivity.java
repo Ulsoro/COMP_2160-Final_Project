@@ -1,5 +1,7 @@
 package osborne.william.glucotrak;
 
+import android.arch.lifecycle.ViewModelProviders;
+import android.content.Intent;
 import android.os.Bundle;
 import android.support.v7.app.AppCompatActivity;
 import android.view.View;
@@ -9,7 +11,7 @@ import android.widget.Spinner;
 import android.widget.TextView;
 import android.widget.Toast;
 
-public class EditBloodGlucose extends AppCompatActivity {
+public class EditBloodGlucoseActivity extends AppCompatActivity {
 
     ImageButton cancelButton;
     ImageButton acceptButton;
@@ -19,6 +21,12 @@ public class EditBloodGlucose extends AppCompatActivity {
     TextView bgDate;
     TextView bgTime;
     EditText bgNote;
+
+    private BloodGlucoseViewModel bloodGlucoseViewModel;
+
+    Intent intent;
+
+    boolean editExisting;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -34,15 +42,19 @@ public class EditBloodGlucose extends AppCompatActivity {
         bgTime = (TextView) findViewById(R.id.bgTimeTextView);
         bgNote = (EditText) findViewById(R.id.bgNotesEditText);
 
-        bgDate.setOnClickListener(new View.OnClickListener() {
-            @Override
-            public void onClick(View v) {
+        // View model gives access to Database
+        bloodGlucoseViewModel = ViewModelProviders.of(this).get(BloodGlucoseViewModel.class);
 
-                Toast toast = Toast.makeText(getApplicationContext(), "WOO", Toast.LENGTH_LONG);
-                toast.show();
+        intent = getIntent();
 
-            }
-        });
+        editExisting = intent.getBooleanExtra("existing", false);
+
+        if (editExisting) {
+            bgConcentration.setText(String.valueOf(intent.getDoubleExtra("bgcon", 0)));
+            bgRelTime.setSelection(0);  // TODO FIX THIS
+            bgDate.setText(intent.getStringExtra("date"));
+            bgNote.setText(intent.getStringExtra("notes"));
+        }
 
         cancelButton.setOnClickListener(new View.OnClickListener() {
             @Override
@@ -55,25 +67,19 @@ public class EditBloodGlucose extends AppCompatActivity {
             @Override
             public void onClick(View v) {
 
+                double bgCon = Double.parseDouble(bgConcentration.getText().toString());
+                String bgRTime = bgRelTime.getSelectedItem().toString();
+                long time = System.currentTimeMillis();
+                String note = bgNote.getText().toString();
 
+                if (editExisting){
+                    long id = intent.getLongExtra("id", System.currentTimeMillis());
+                    bloodGlucoseViewModel.insert(new BloodGlucoseRecord(id, time, bgCon, bgRTime, note));
+                }
+                else {
+                    bloodGlucoseViewModel.insert(new BloodGlucoseRecord(time, bgCon, bgRTime, note));
+                }
 
-                /*
-                BloodGlucoseDAO bgDao;
-                BloodGlucoseRoomDatabase db = Room.databaseBuilder(getApplicationContext(), BloodGlucoseRoomDatabase.class, "bgData")
-                        .allowMainThreadQueries()  // TODO: DO NOT ALLOW MAIN THREAD QUERIES!  This is awful.
-                        .build();
-
-                bgDao = db.bloodGlucoseDAO();
-
-                double bsCon = Double.parseDouble(bgConcentration.getText().toString());
-                String relTime = bgRelTime.getSelectedItem().toString();
-                String notes = bgNote.getText().toString();
-
-                bgDao.insert(new BloodGlucoseRecord(System.currentTimeMillis(), bsCon, relTime, notes));
-
-                setResult(1);
-
-                */
                 finish();
             }
         });

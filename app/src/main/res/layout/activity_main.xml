@@ -25,47 +25,54 @@
             android:orientation="horizontal">
 
             <Button
+                android:id="@+id/mainStatsButton"
+                style="@style/Widget.AppCompat.Button.Borderless"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:text="@string/Statistics"
+                android:textColor="@android:color/black" />
+
+            <Button
                 android:id="@+id/mainGlucoseButton"
                 style="@style/Widget.AppCompat.Button.Borderless"
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
-                android:text="@string/Glucose" />
+                android:text="@string/Glucose"
+                android:textAllCaps="false"
+                android:textColor="@color/colorPrimary" />
 
             <Button
                 android:id="@+id/mainPressureButton"
                 style="@style/Widget.AppCompat.Button.Borderless"
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
-                android:text="@string/Pressure" />
+                android:text="@string/Pressure"
+                android:textColor="@android:color/darker_gray" />
 
             <Button
                 android:id="@+id/mainA1CButton"
                 style="@style/Widget.AppCompat.Button.Borderless"
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
-                android:text="@string/A1C" />
+                android:text="@string/A1C"
+                android:textColor="@android:color/darker_gray" />
+
 
             <Button
                 android:id="@+id/mainMedicationButton"
                 style="@style/Widget.AppCompat.Button.Borderless"
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
-                android:text="@string/Medication" />
+                android:text="@string/Medication"
+                android:textColor="@android:color/darker_gray" />
 
             <Button
                 android:id="@+id/mainContactButton"
                 style="@style/Widget.AppCompat.Button.Borderless"
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
-                android:text="@string/Contacts" />
-
-            <Button
-                android:id="@+id/mainStatsButton"
-                style="@style/Widget.AppCompat.Button.Borderless"
-                android:layout_width="wrap_content"
-                android:layout_height="wrap_content"
-                android:text="@string/Statistics" />
-
+                android:text="@string/Contacts"
+                android:textColor="@android:color/darker_gray" />
 
         </LinearLayout>
     </HorizontalScrollView>

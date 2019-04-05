@@ -1,13 +1,19 @@
 package osborne.william.glucotrak;
 
 import android.content.Context;
+import android.content.Intent;
 import android.support.v7.widget.RecyclerView;
+import android.text.format.DateFormat;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
 import android.widget.TextView;
 
+import java.util.Calendar;
+import java.util.Date;
 import java.util.List;
+
+import static android.support.v4.app.ActivityCompat.startActivityForResult;
 
 public class BloodGlucoseAdapter extends RecyclerView.Adapter<BloodGlucoseAdapter.BloodGlucoseViewHolder> {
 
@@ -32,15 +38,18 @@ public class BloodGlucoseAdapter extends RecyclerView.Adapter<BloodGlucoseAdapte
 
     @Override
     public BloodGlucoseViewHolder onCreateViewHolder(ViewGroup parent, int viewType) {
-        View itemView = mInflater.inflate(R.layout.blood_glucose_row, parent, false);
+        final View itemView = mInflater.inflate(R.layout.blood_glucose_row, parent, false);
         return new BloodGlucoseViewHolder(itemView);
     }
 
     @Override
     public void onBindViewHolder(BloodGlucoseViewHolder holder, int position) {
+
+        final BloodGlucoseRecord current = mBGList.get(position);
+
         if (mBGList != null) {
-            BloodGlucoseRecord current = mBGList.get(position);
-            holder.dateTextView.setText(String.valueOf(current.getDate()));
+
+            holder.dateTextView.setText(DateFormat.format("dd-MM-yyyy hh:mm a", current.getDate()).toString());
             holder.relativeTimeTextView.setText(current.getRelativeTime());
             holder.bloodGlucoseReadingTextView.setText(String.valueOf(current.getBloodSugarConcentration()));
         } else {
@@ -49,6 +58,32 @@ public class BloodGlucoseAdapter extends RecyclerView.Adapter<BloodGlucoseAdapte
             holder.relativeTimeTextView.setText("No Relative Time");
             holder.bloodGlucoseReadingTextView.setText("No Glucose Reading");
         }
+
+        holder.itemView.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+                Context context = v.getContext();
+                Intent intent = new Intent(context, EditBloodGlucoseActivity.class);
+                intent.putExtra("existing", true);
+                intent.putExtra("id", current.getId());
+                intent.putExtra("bgcon", current.getBloodSugarConcentration());
+                intent.putExtra("date", current.getDate());
+                intent.putExtra("relativeTime", current.getRelativeTime());
+                intent.putExtra("notes", current.getNotes());
+                context.startActivity(intent);
+            }
+        });
+
+                /*setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+
+                Context context = v.getContext();
+                Intent intent = new Intent(context, EditBloodGlucoseActivity.class);
+                intent.putExtra("id", itemView.);
+                context.startActivity(intent);
+            }
+        });*/
     }
 
     void setBloodGlucose(List<BloodGlucoseRecord> bgList){
