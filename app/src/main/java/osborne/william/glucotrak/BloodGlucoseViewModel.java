@@ -25,11 +25,7 @@ public class BloodGlucoseViewModel extends AndroidViewModel {
 
         return mallBloodGlucoseRecords;
     }
-/*
-    List<BloodGlucoseRecord> getAllBGRecordList() {
-        return allBGRecordList;
-    }
-*/
+
     public void insert(BloodGlucoseRecord bloodGlucoseRecord) {
 
         mRepository.insert(bloodGlucoseRecord);

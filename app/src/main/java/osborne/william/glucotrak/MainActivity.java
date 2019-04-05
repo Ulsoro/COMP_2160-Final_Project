@@ -49,8 +49,5 @@ public class MainActivity extends AppCompatActivity {
                 adapter.setBloodGlucose(bloodGlucoseRecords);
             }
         });
-
-        //bloodGlucoseViewModel.insert(new BloodGlucoseRecord(System.currentTimeMillis(), 11.2, "Before Breakfast", ""));
-        //bloodGlucoseViewModel.insert(new BloodGlucoseRecord(System.currentTimeMillis(), 8.4, "Before Sleep", ""));
     }
 }
