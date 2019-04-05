@@ -51,6 +51,8 @@ public class MainActivity extends AppCompatActivity {
             }
         });
 
+        // bloodGlucoseViewModel.insert(new BloodGlucoseRecord(System.currentTimeMillis(), 11.2, "Before Breakfast", ""));
+        // bloodGlucoseViewModel.insert(new BloodGlucoseRecord(System.currentTimeMillis(), 8.4, "Before Sleep", ""));
 
         /*
         BloodGlucoseDAO bgDao;

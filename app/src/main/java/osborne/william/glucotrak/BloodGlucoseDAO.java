@@ -20,6 +20,9 @@ public interface BloodGlucoseDAO {
     @Query("SELECT * FROM BloodGlucoseTable")
     LiveData<List<BloodGlucoseRecord>> getAllRecords();
 
+    @Query("SELECT * FROM BloodGlucoseTable")
+    List<BloodGlucoseRecord> getAllRecordList();
+
 
 
 }

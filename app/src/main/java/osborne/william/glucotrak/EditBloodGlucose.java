@@ -1,6 +1,5 @@
 package osborne.william.glucotrak;
 
-import android.arch.persistence.room.Room;
 import android.os.Bundle;
 import android.support.v7.app.AppCompatActivity;
 import android.view.View;
@@ -20,8 +19,6 @@ public class EditBloodGlucose extends AppCompatActivity {
     TextView bgDate;
     TextView bgTime;
     EditText bgNote;
-
-
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -59,6 +56,8 @@ public class EditBloodGlucose extends AppCompatActivity {
             public void onClick(View v) {
 
 
+
+                /*
                 BloodGlucoseDAO bgDao;
                 BloodGlucoseRoomDatabase db = Room.databaseBuilder(getApplicationContext(), BloodGlucoseRoomDatabase.class, "bgData")
                         .allowMainThreadQueries()  // TODO: DO NOT ALLOW MAIN THREAD QUERIES!  This is awful.
@@ -73,6 +72,8 @@ public class EditBloodGlucose extends AppCompatActivity {
                 bgDao.insert(new BloodGlucoseRecord(System.currentTimeMillis(), bsCon, relTime, notes));
 
                 setResult(1);
+
+                */
                 finish();
             }
         });
