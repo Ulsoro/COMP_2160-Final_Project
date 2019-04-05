@@ -1,13 +1,18 @@
 package osborne.william.glucotrak;
 
+import android.app.AlertDialog;
+import android.arch.lifecycle.ViewModelProviders;
 import android.content.Context;
+import android.content.DialogInterface;
 import android.content.Intent;
 import android.support.v7.widget.RecyclerView;
 import android.text.format.DateFormat;
 import android.view.LayoutInflater;
+import android.view.MotionEvent;
 import android.view.View;
 import android.view.ViewGroup;
 import android.widget.TextView;
+import android.widget.Toast;
 
 import java.util.Calendar;
 import java.util.Date;
@@ -16,6 +21,8 @@ import java.util.List;
 import static android.support.v4.app.ActivityCompat.startActivityForResult;
 
 public class BloodGlucoseAdapter extends RecyclerView.Adapter<BloodGlucoseAdapter.BloodGlucoseViewHolder> {
+
+
 
     class BloodGlucoseViewHolder extends RecyclerView.ViewHolder {
 
@@ -43,7 +50,7 @@ public class BloodGlucoseAdapter extends RecyclerView.Adapter<BloodGlucoseAdapte
     }
 
     @Override
-    public void onBindViewHolder(BloodGlucoseViewHolder holder, int position) {
+    public void onBindViewHolder(final BloodGlucoseViewHolder holder, int position) {
 
         final BloodGlucoseRecord current = mBGList.get(position);
 
@@ -74,16 +81,33 @@ public class BloodGlucoseAdapter extends RecyclerView.Adapter<BloodGlucoseAdapte
             }
         });
 
-                /*setOnClickListener(new View.OnClickListener() {
+        holder.itemView.setOnLongClickListener(new View.OnLongClickListener() {
             @Override
-            public void onClick(View v) {
+            public boolean onLongClick(View v) {
 
-                Context context = v.getContext();
-                Intent intent = new Intent(context, EditBloodGlucoseActivity.class);
-                intent.putExtra("id", itemView.);
-                context.startActivity(intent);
+                DialogInterface.OnClickListener dialogClickListener = new DialogInterface.OnClickListener() {
+                    @Override
+                    public void onClick(DialogInterface dialog, int which) {
+                        switch (which){
+                            case DialogInterface.BUTTON_POSITIVE:
+                                MainActivity.removeRecord(current);
+                                break;
+
+                            case DialogInterface.BUTTON_NEGATIVE:
+                                //No button clicked
+                                break;
+                        }
+                    }
+                };
+
+                AlertDialog.Builder builder = new AlertDialog.Builder(v.getContext());
+                builder.setMessage("Delete Record?").setPositiveButton("Yes", dialogClickListener)
+                        .setNegativeButton("No", dialogClickListener).show();
+
+
+                return false;
             }
-        });*/
+        });
     }
 
     void setBloodGlucose(List<BloodGlucoseRecord> bgList){

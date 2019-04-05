@@ -30,4 +30,12 @@ public class BloodGlucoseViewModel extends AndroidViewModel {
 
         mRepository.insert(bloodGlucoseRecord);
     }
+
+
+    public void deleteRecord(BloodGlucoseRecord bloodGlucoseRecord) {
+
+        mRepository.deleteRecord(bloodGlucoseRecord);
+    }
+
+
 }

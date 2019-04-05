@@ -32,7 +32,6 @@ public class BloodGlucoseRepository {
         new insertAsyncTask(bloodGlucoseDAO).execute(bloodGlucoseRecord);
     }
 
-
     private static class insertAsyncTask extends AsyncTask<BloodGlucoseRecord, Void, Void> {
 
         private BloodGlucoseDAO mAsyncTaskDAO;
@@ -47,4 +46,26 @@ public class BloodGlucoseRepository {
             return null;
         }
     }
+
+
+    public void deleteRecord(BloodGlucoseRecord bloodGlucoseRecord) {
+        new deleteBGRecordAsyncTask(bloodGlucoseDAO).execute(bloodGlucoseRecord);
+    }
+
+    private static class deleteBGRecordAsyncTask extends AsyncTask<BloodGlucoseRecord, Void, Void> {
+
+        private BloodGlucoseDAO mAsyncTaskDAO;
+
+        deleteBGRecordAsyncTask(BloodGlucoseDAO bGDAO) {
+            mAsyncTaskDAO = bGDAO;
+        }
+
+        @Override
+        protected Void doInBackground(final BloodGlucoseRecord... params) {
+            mAsyncTaskDAO.deleteRecord(params[0]);
+            return null;
+        }
+    }
+
+
 }

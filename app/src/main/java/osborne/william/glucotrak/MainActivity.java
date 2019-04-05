@@ -19,7 +19,7 @@ public class MainActivity extends AppCompatActivity {
 
     private FloatingActionButton fab;
 
-    private BloodGlucoseViewModel bloodGlucoseViewModel;
+    private static BloodGlucoseViewModel bloodGlucoseViewModel;
 
 
     @Override
@@ -49,5 +49,10 @@ public class MainActivity extends AppCompatActivity {
                 adapter.setBloodGlucose(bloodGlucoseRecords);
             }
         });
+    }
+
+    public static void removeRecord(BloodGlucoseRecord bloodGlucoseRecord) {
+
+        bloodGlucoseViewModel.deleteRecord(bloodGlucoseRecord);
     }
 }
