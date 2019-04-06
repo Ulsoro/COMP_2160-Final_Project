@@ -5,20 +5,21 @@ import android.arch.persistence.room.Room;
 import android.arch.persistence.room.RoomDatabase;
 import android.content.Context;
 
-@Database(entities = {BloodGlucoseRecord.class}, version = 1, exportSchema = false)
-public abstract class BloodGlucoseRoomDatabase extends RoomDatabase {
+@Database(entities = {BloodGlucoseRecord.class, BPRecord.class}, version = 1, exportSchema = false)
+public abstract class GlucoTrackRoomDatabase extends RoomDatabase {
 
     public abstract BloodGlucoseDAO bloodGlucoseDAO();
+    public abstract BPDAO bpDAO();
 
     // Ensures there is only one instance of the Database
-    private static volatile BloodGlucoseRoomDatabase INSTANCE;
+    private static volatile GlucoTrackRoomDatabase INSTANCE;
 
-    static BloodGlucoseRoomDatabase getDatabase(final Context context) {
+    static GlucoTrackRoomDatabase getDatabase(final Context context) {
         if (INSTANCE == null) {
-            synchronized (BloodGlucoseRoomDatabase.class) {
+            synchronized (GlucoTrackRoomDatabase.class) {
                 if (INSTANCE == null) {
                     INSTANCE = Room.databaseBuilder(context.getApplicationContext(),
-                            BloodGlucoseRoomDatabase.class, "BloodGlucoseDatabase")
+                            GlucoTrackRoomDatabase.class, "BloodGlucoseDatabase")
                             .build();
                 }
             }

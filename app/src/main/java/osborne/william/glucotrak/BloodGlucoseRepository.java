@@ -10,23 +10,22 @@ public class BloodGlucoseRepository {
 
     private BloodGlucoseDAO bloodGlucoseDAO;
     private LiveData<List<BloodGlucoseRecord>> glucoseRecords;
+    //private static Double allTimeBGAverage;
     //private List<BloodGlucoseRecord> glucoseRecordList;
 
 
     BloodGlucoseRepository(Application application) {
-        BloodGlucoseRoomDatabase db = BloodGlucoseRoomDatabase.getDatabase(application);
+        GlucoTrackRoomDatabase db = GlucoTrackRoomDatabase.getDatabase(application);
         bloodGlucoseDAO = db.bloodGlucoseDAO();
         glucoseRecords = bloodGlucoseDAO.getAllRecords();
         //glucoseRecordList = bloodGlucoseDAO.getAllRecordList();
+        //allTimeBGAverage = getAllTimeBGAverage();
     }
 
     // Live Data wrapped around list for recyclerviews
     LiveData<List<BloodGlucoseRecord>> getAllRecords() {
         return glucoseRecords;
     }
-
-    // Raw list available if needed
-    //List<BloodGlucoseRecord> getAllRecordList() { return glucoseRecordList; }
 
     public void insert(BloodGlucoseRecord bloodGlucoseRecord) {
         new insertAsyncTask(bloodGlucoseDAO).execute(bloodGlucoseRecord);
@@ -66,6 +65,27 @@ public class BloodGlucoseRepository {
             return null;
         }
     }
+
+
+
+    /* TODO: Get Async Querries that return a value working
+    public Double getAllTimeBGAverage() {
+        new getAllTimeBGAverageAsyncTask().execute();
+        return allTimeBGAverage;
+    }
+
+    private static class getAllTimeBGAverageAsyncTask extends AsyncTask<Void, Void, Void> {
+
+        private BloodGlucoseDAO mAsyncTaskDAO;
+
+        @Override
+        protected Void doInBackground(Void... voids) {
+            allTimeBGAverage = mAsyncTaskDAO.getAllTimeBGAverage();
+            return null;
+        }
+    } */
+
+
 
 
 }

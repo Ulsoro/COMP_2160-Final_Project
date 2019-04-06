@@ -47,7 +47,7 @@ public class EditBloodGlucoseActivity extends AppCompatActivity {
 
         bgConcentration = (EditText) findViewById(R.id.bgConcentrationEditText);
         bgRelTime = (Spinner) findViewById(R.id.bgRelativeTimeMeasuredSpinner);
-        bgDate = (TextView) findViewById(R.id.a1cDateEditText);
+        bgDate = (TextView) findViewById(R.id.bgRowDateEditText);
         bgTime = (TextView) findViewById(R.id.bgTimeEditText);
         bgNote = (EditText) findViewById(R.id.bgNotesEditText);
 
@@ -159,7 +159,7 @@ public class EditBloodGlucoseActivity extends AppCompatActivity {
     // Updates the Date and Time with current values from the Calendar Object
     private void updateLabel() {
         String dateFormat = "dd-MMM-yyyy"; // Format for Date
-        String timeFormat = "hh:mm aa";
+        String timeFormat = "h:mm aa";
         SimpleDateFormat sdfDate = new SimpleDateFormat(dateFormat, Locale.US);
         SimpleDateFormat sdfTime = new SimpleDateFormat(timeFormat, Locale.US);
 

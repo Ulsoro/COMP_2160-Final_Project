@@ -4,6 +4,7 @@ import android.app.AlertDialog;
 import android.content.Context;
 import android.content.DialogInterface;
 import android.content.Intent;
+import android.support.annotation.NonNull;
 import android.support.v7.widget.RecyclerView;
 import android.text.format.DateFormat;
 import android.view.LayoutInflater;
@@ -11,56 +12,65 @@ import android.view.View;
 import android.view.ViewGroup;
 import android.widget.TextView;
 
+import org.w3c.dom.Text;
+
 import java.util.List;
 
-public class BloodGlucoseAdapter extends RecyclerView.Adapter<BloodGlucoseAdapter.BloodGlucoseViewHolder> {
+public class BPAdapter extends RecyclerView.Adapter<BPAdapter.BPViewHolder> {
 
 
 
-    class BloodGlucoseViewHolder extends RecyclerView.ViewHolder {
+    class BPViewHolder extends RecyclerView.ViewHolder {
 
-        private TextView dateTextView;
-        private TextView relativeTimeTextView;
-        private TextView bloodGlucoseReadingTextView;
-        private TextView bloodGlucoseNotes;
+        private TextView bprowDate;
+        private TextView bprowNote;
+        private TextView bprowSystolic;
+        private TextView bprowDiastolic;
 
-        private BloodGlucoseViewHolder(View itemView) {
+        private BPViewHolder(View itemView) {
             super(itemView);
-            dateTextView = itemView.findViewById(R.id.bgRowDateEditText);
-            relativeTimeTextView = itemView.findViewById(R.id.bgRelativeTimeTextView);
-            bloodGlucoseReadingTextView = itemView.findViewById(R.id.bgBloodGlucoseTextView);
-            bloodGlucoseNotes = itemView.findViewById(R.id.bgRowNotesTextView);
+            bprowDate = itemView.findViewById(R.id.bprowDate);
+            bprowNote = itemView.findViewById(R.id.bpRowNotes);
+            bprowSystolic = itemView.findViewById(R.id.bprowSystolic);
+            bprowDiastolic = itemView.findViewById(R.id.bprowDiastolic);
         }
+
     }
 
     private final LayoutInflater mInflater;
-    private List<BloodGlucoseRecord> mBGList; // Cached copy of Blood Glucose Readings
+    private List<BPRecord> mBPList; // Cached copy of Blood Glucose Readings
 
-    BloodGlucoseAdapter(Context context) { mInflater = LayoutInflater.from(context); }
+    BPAdapter(Context context) { mInflater = LayoutInflater.from(context); }
 
     @Override
-    public BloodGlucoseViewHolder onCreateViewHolder(ViewGroup parent, int viewType) {
-        final View itemView = mInflater.inflate(R.layout.blood_glucose_row, parent, false);
-        return new BloodGlucoseViewHolder(itemView);
+    public BPViewHolder onCreateViewHolder(ViewGroup parent, int viewType) {
+        final View itemView = mInflater.inflate(R.layout.blood_pressure_row, parent, false);
+        return new BPViewHolder(itemView);
     }
 
+
+
+
+
+
+
     @Override
-    public void onBindViewHolder(final BloodGlucoseViewHolder holder, int position) {
+    public void onBindViewHolder(final BPViewHolder holder, int position) {
 
-        final BloodGlucoseRecord current = mBGList.get(position);
+        final BPRecord current = mBPList.get(position);
 
-        if (mBGList != null) {
+        if (mBPList != null) {
 
-            holder.dateTextView.setText(DateFormat.format("dd-MMM-yyyy h:mm a", current.getDate()).toString());
-            holder.relativeTimeTextView.setText(current.getRelativeTime());
-            holder.bloodGlucoseReadingTextView.setText(String.valueOf(current.getBloodSugarConcentration()));
-            holder.bloodGlucoseNotes.setText(current.getNotes());
+            holder.bprowDate.setText(DateFormat.format("dd-MMM-yyyy h:mm a", current.getDate()).toString());
+            holder.bprowSystolic.setText(String.valueOf(current.getSystolic()));
+            holder.bprowDiastolic.setText(String.valueOf(current.getDiastolic()));
+            holder.bprowNote.setText(current.getNotes());
         } else {
             // Covers the case of data not being ready yet.
-            holder.dateTextView.setText("No Date");
-            holder.relativeTimeTextView.setText("No Relative Time");
-            holder.bloodGlucoseReadingTextView.setText("No Glucose Reading");
-            holder.bloodGlucoseNotes.setText("No Notes");
+            holder.bprowDate.setText("No Date");
+            holder.bprowSystolic.setText("No Systolic");
+            holder.bprowDiastolic.setText("No Diastolic");
+            holder.bprowNote.setText("No Notes");
         }
 
         holder.itemView.setOnClickListener(new View.OnClickListener() {
@@ -70,10 +80,11 @@ public class BloodGlucoseAdapter extends RecyclerView.Adapter<BloodGlucoseAdapte
                 Intent intent = new Intent(context, EditBloodGlucoseActivity.class);
                 intent.putExtra("existing", true);
                 intent.putExtra("id", current.getId());
-                intent.putExtra("bgcon", current.getBloodSugarConcentration());
                 intent.putExtra("date", current.getDate());
-                intent.putExtra("relativeTime", current.getRelativeTime());
                 intent.putExtra("notes", current.getNotes());
+                intent.putExtra("systolic", current.getSystolic());
+                intent.putExtra("diastolic", current.getDiastolic());
+
                 context.startActivity(intent);
             }
         });
@@ -107,8 +118,8 @@ public class BloodGlucoseAdapter extends RecyclerView.Adapter<BloodGlucoseAdapte
         });
     }
 
-    void setBloodGlucose(List<BloodGlucoseRecord> bgList){
-        mBGList = bgList;
+    void setBP(List<BPRecord> bgList){
+        mBPList = bgList;
         notifyDataSetChanged();
     }
 
@@ -116,8 +127,11 @@ public class BloodGlucoseAdapter extends RecyclerView.Adapter<BloodGlucoseAdapte
     // mWords has not been updated (means initially, it's null, and we can't return null).
     @Override
     public int getItemCount() {
-        if (mBGList != null)
-            return mBGList.size();
+        if (mBPList != null)
+            return mBPList.size();
         else return 0;
     }
+
 }
+
+

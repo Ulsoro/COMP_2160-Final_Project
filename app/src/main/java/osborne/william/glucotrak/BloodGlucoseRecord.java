@@ -91,7 +91,8 @@ public class BloodGlucoseRecord {
     @Override
     public String toString() {
         return "BloodGlucoseRecord{" +
-                "date=" + date +
+                "id=" + id +
+                ", date=" + date +
                 ", bloodSugarConcentration=" + bloodSugarConcentration +
                 ", relativeTime='" + relativeTime + '\'' +
                 ", notes='" + notes + '\'' +

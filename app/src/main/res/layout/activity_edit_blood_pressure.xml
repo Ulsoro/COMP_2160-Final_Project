@@ -80,10 +80,10 @@
         android:layout_marginEnd="8dp"
         android:ems="10"
         android:inputType="time"
-        app:layout_constraintBottom_toBottomOf="@+id/a1cDateEditText"
+        app:layout_constraintBottom_toBottomOf="@+id/bgRowDateEditText"
         app:layout_constraintEnd_toStartOf="@+id/guideline2"
         app:layout_constraintStart_toStartOf="@+id/guideline12"
-        app:layout_constraintTop_toTopOf="@+id/a1cDateEditText" />
+        app:layout_constraintTop_toTopOf="@+id/bgRowDateEditText" />
 
     <EditText
         android:id="@+id/systolicPressureEditText2"
@@ -172,7 +172,7 @@
         app:layout_constraintTop_toTopOf="@+id/guideline5" />
 
     <EditText
-        android:id="@+id/a1cDateEditText"
+        android:id="@+id/bgRowDateEditText"
         android:layout_width="0dp"
         android:layout_height="wrap_content"
         android:layout_marginStart="8dp"
