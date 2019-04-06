@@ -8,11 +8,12 @@ import android.arch.persistence.room.PrimaryKey;
 @Entity(tableName = "BloodGlucoseTable")
 public class BloodGlucoseRecord {
 
-    // Date and Time in Milliseconds
+
     @PrimaryKey
     @ColumnInfo(name = "id")
     public Long id;
 
+    // Date and Time in Milliseconds
     @ColumnInfo(name = "date")
     public Long date;
 

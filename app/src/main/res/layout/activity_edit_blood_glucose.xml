@@ -11,7 +11,6 @@
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
         android:layout_marginStart="8dp"
-        android:layout_marginBottom="8dp"
         android:text="@string/bloodSugarLabel"
         app:layout_constraintBottom_toTopOf="@+id/bgConcentrationEditText"
         app:layout_constraintStart_toStartOf="@+id/bgConcentrationEditText" />
@@ -71,33 +70,38 @@
         app:layout_constraintStart_toStartOf="@+id/relativeTimeLabelTextView"
         app:layout_constraintTop_toTopOf="@+id/guideline5" />
 
-    <TextView
-        android:id="@+id/bgDateTextView"
-        android:layout_width="130dp"
+    <EditText
+        android:id="@+id/a1cDateEditText"
+        android:layout_width="0dp"
         android:layout_height="wrap_content"
         android:layout_marginStart="8dp"
-        android:layout_marginTop="8dp"
+        android:layout_marginEnd="8dp"
         android:layout_marginBottom="8dp"
+        android:clickable="true"
         android:ems="10"
+        android:focusable="false"
         android:inputType="datetime"
+        android:textAlignment="center"
         app:layout_constraintBottom_toTopOf="@+id/guideline6"
+        app:layout_constraintEnd_toStartOf="@+id/guideline10"
         app:layout_constraintStart_toStartOf="@+id/guideline3"
         app:layout_constraintTop_toBottomOf="@+id/dateTimeLabelTextView" />
 
-    <TextView
-        android:id="@+id/bgTimeTextView"
-        android:layout_width="129dp"
+    <EditText
+        android:id="@+id/bgTimeEditText"
+        android:layout_width="0dp"
         android:layout_height="wrap_content"
         android:layout_marginStart="8dp"
         android:layout_marginTop="8dp"
         android:layout_marginEnd="8dp"
+        android:clickable="true"
         android:ems="10"
-        android:inputType="time"
-        app:layout_constraintBottom_toBottomOf="@+id/bgDateTextView"
+        android:focusable="false"
+        android:textAlignment="center"
+        app:layout_constraintBottom_toBottomOf="@+id/a1cDateEditText"
         app:layout_constraintEnd_toStartOf="@+id/guideline2"
-        app:layout_constraintHorizontal_bias="0.6"
-        app:layout_constraintStart_toEndOf="@+id/bgDateTextView"
-        app:layout_constraintTop_toTopOf="@+id/bgDateTextView"
+        app:layout_constraintStart_toStartOf="@+id/guideline10"
+        app:layout_constraintTop_toTopOf="@+id/a1cDateEditText"
         app:layout_constraintVertical_bias="1.0" />
 
     <TextView
@@ -115,7 +119,6 @@
         android:layout_width="0dp"
         android:layout_height="wrap_content"
         android:layout_marginStart="8dp"
-        android:layout_marginTop="8dp"
         android:layout_marginEnd="8dp"
         android:ems="10"
         android:inputType="textMultiLine"
@@ -207,6 +210,13 @@
         app:layout_constraintEnd_toStartOf="@+id/guideline2"
         app:layout_constraintStart_toStartOf="@+id/guideline3"
         app:layout_constraintTop_toTopOf="parent" />
+
+    <android.support.constraint.Guideline
+        android:id="@+id/guideline10"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:orientation="vertical"
+        app:layout_constraintGuide_percent="0.5" />
 
 
 </android.support.constraint.ConstraintLayout>

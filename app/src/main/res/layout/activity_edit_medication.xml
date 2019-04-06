@@ -3,128 +3,121 @@
     xmlns:app="http://schemas.android.com/apk/res-auto"
     xmlns:tools="http://schemas.android.com/tools"
     android:layout_width="match_parent"
-    android:layout_height="match_parent"
-    tools:layout_editor_absoluteY="73dp">
-
-    <TextView
-        android:id="@+id/bloodSugarLabelTextView"
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
-        android:layout_marginStart="8dp"
-        android:layout_marginTop="8dp"
-        android:text="@string/bloodSugarLabel"
-        app:layout_constraintStart_toStartOf="@+id/bgConcentrationEditText"
-        app:layout_constraintTop_toTopOf="@+id/guideline7" />
-
-    <EditText
-        android:id="@+id/bgConcentrationEditText"
-        android:layout_width="235dp"
-        android:layout_height="wrap_content"
-        android:layout_marginStart="8dp"
-        android:ems="10"
-        android:inputType="numberDecimal"
-        app:layout_constraintStart_toStartOf="@+id/guideline3"
-        app:layout_constraintTop_toBottomOf="@+id/bloodSugarLabelTextView" />
-
-    <TextView
-        android:id="@+id/bloodSugarUnitsLabelTextView"
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
-        android:layout_marginStart="8dp"
-        android:layout_marginTop="8dp"
-        android:layout_marginBottom="8dp"
-        android:text="@string/bloodSugarUnits"
-        app:layout_constraintBottom_toBottomOf="@+id/bgConcentrationEditText"
-        app:layout_constraintStart_toEndOf="@+id/bgConcentrationEditText"
-        app:layout_constraintTop_toTopOf="@+id/bgConcentrationEditText" />
-
-    <TextView
-        android:id="@+id/relativeTimeLabelTextView"
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
-        android:layout_marginStart="8dp"
-        android:layout_marginTop="8dp"
-        android:text="@string/relativeTimeMeasured"
-        app:layout_constraintStart_toStartOf="@+id/bgConcentrationEditText"
-        app:layout_constraintTop_toTopOf="@+id/guideline4" />
-
-    <Spinner
-        android:id="@+id/bgRelativeTimeMeasuredSpinner"
-        android:layout_width="0dp"
-        android:layout_height="wrap_content"
-        android:layout_marginStart="8dp"
-        android:layout_marginTop="8dp"
-        android:layout_marginEnd="8dp"
-        android:entries="@array/relativeTimeTags"
-        app:layout_constraintEnd_toStartOf="@+id/guideline2"
-        app:layout_constraintStart_toStartOf="@+id/guideline3"
-        app:layout_constraintTop_toBottomOf="@+id/relativeTimeLabelTextView" />
-
-    <TextView
-        android:id="@+id/dateTimeLabelTextView"
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
-        android:layout_marginStart="8dp"
-        android:layout_marginTop="8dp"
-        android:text="@string/dateAndTime"
-        app:layout_constraintStart_toStartOf="@+id/relativeTimeLabelTextView"
-        app:layout_constraintTop_toTopOf="@+id/guideline5" />
-
-    <EditText
-        android:id="@+id/a1cDateEditText"
-        android:layout_width="0dp"
-        android:layout_height="wrap_content"
-        android:layout_marginStart="8dp"
-        android:layout_marginEnd="8dp"
-        android:layout_marginBottom="8dp"
-        android:clickable="true"
-        android:ems="10"
-        android:focusable="false"
-        android:textAlignment="center"
-        app:layout_constraintBottom_toTopOf="@+id/guideline6"
-        app:layout_constraintEnd_toStartOf="@+id/guideline11"
-        app:layout_constraintStart_toStartOf="@+id/guideline3"
-        app:layout_constraintTop_toBottomOf="@+id/dateTimeLabelTextView" />
-
-    <EditText
-        android:id="@+id/bgTimeEditText"
-        android:layout_width="0dp"
-        android:layout_height="wrap_content"
-        android:layout_marginStart="8dp"
-        android:layout_marginTop="8dp"
-        android:layout_marginEnd="8dp"
-        android:clickable="true"
-        android:ems="10"
-        android:focusable="false"
-        android:textAlignment="center"
-        app:layout_constraintBottom_toBottomOf="@+id/a1cDateEditText"
-        app:layout_constraintEnd_toStartOf="@+id/guideline2"
-        app:layout_constraintHorizontal_bias="0.6"
-        app:layout_constraintStart_toStartOf="@+id/guideline11"
-        app:layout_constraintTop_toTopOf="@+id/a1cDateEditText"
-        app:layout_constraintVertical_bias="1.0" />
+    android:layout_height="match_parent">
 
     <TextView
         android:id="@+id/notesLabelTextView"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
-        android:layout_marginStart="8dp"
         android:layout_marginTop="8dp"
         android:text="@string/notesLabel"
-        app:layout_constraintStart_toStartOf="@+id/dateTimeLabelTextView"
-        app:layout_constraintTop_toTopOf="@+id/guideline6" />
+        app:layout_constraintStart_toStartOf="@+id/medperscribingDoctorEditText"
+        app:layout_constraintTop_toBottomOf="@+id/medperscribingDoctorEditText" />
 
     <EditText
-        android:id="@+id/bgNotesEditText"
-        android:layout_width="0dp"
+        android:id="@+id/mednotesEditText"
+        android:layout_width="284dp"
         android:layout_height="wrap_content"
-        android:layout_marginStart="8dp"
-        android:layout_marginEnd="8dp"
         android:ems="10"
         android:inputType="textMultiLine"
-        app:layout_constraintEnd_toStartOf="@+id/guideline2"
-        app:layout_constraintStart_toStartOf="@+id/guideline3"
+        app:layout_constraintStart_toStartOf="@+id/notesLabelTextView"
         app:layout_constraintTop_toBottomOf="@+id/notesLabelTextView" />
+
+    <TextView
+        android:id="@+id/medicationNameLabelTextView"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_marginStart="8dp"
+        android:layout_marginTop="8dp"
+        android:text="@string/medicationNameLabel"
+        app:layout_constraintStart_toStartOf="@+id/guideline3"
+        app:layout_constraintTop_toTopOf="@+id/guideline7" />
+
+    <EditText
+        android:id="@+id/medmedicationNameEditText"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_marginStart="8dp"
+        android:ems="10"
+        android:inputType="text"
+        app:layout_constraintStart_toStartOf="@+id/guideline3"
+        app:layout_constraintTop_toBottomOf="@+id/medicationNameLabelTextView" />
+
+    <TextView
+        android:id="@+id/dosageLabelTextView"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_marginStart="8dp"
+        android:layout_marginTop="8dp"
+        android:text="@string/dosageLabel"
+        app:layout_constraintStart_toStartOf="@+id/guideline3"
+        app:layout_constraintTop_toBottomOf="@+id/medmedicationNameEditText" />
+
+    <EditText
+        android:id="@+id/meddosageEditText"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:ems="10"
+        android:inputType="text"
+        app:layout_constraintStart_toStartOf="@+id/dosageLabelTextView"
+        app:layout_constraintTop_toBottomOf="@+id/dosageLabelTextView" />
+
+    <TextView
+        android:id="@+id/amountDispensedLabelTxtView"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_marginStart="8dp"
+        android:layout_marginTop="8dp"
+        android:text="@string/amountDispensed"
+        app:layout_constraintStart_toStartOf="@+id/guideline3"
+        app:layout_constraintTop_toBottomOf="@+id/meddosageEditText" />
+
+    <EditText
+        android:id="@+id/medamountDispensedEditText"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:ems="10"
+        android:inputType="text"
+        app:layout_constraintStart_toStartOf="@+id/amountDispensedLabelTxtView"
+        app:layout_constraintTop_toBottomOf="@+id/amountDispensedLabelTxtView" />
+
+    <TextView
+        android:id="@+id/refillsLabelTextView"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_marginStart="8dp"
+        android:layout_marginTop="8dp"
+        android:text="@string/refillsLabel"
+        app:layout_constraintStart_toStartOf="@+id/guideline3"
+        app:layout_constraintTop_toBottomOf="@+id/medamountDispensedEditText" />
+
+    <EditText
+        android:id="@+id/medrefillsEditText"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:ems="10"
+        android:inputType="number"
+        app:layout_constraintStart_toStartOf="@+id/refillsLabelTextView"
+        app:layout_constraintTop_toBottomOf="@+id/refillsLabelTextView" />
+
+    <TextView
+        android:id="@+id/perscibingDoctorLabelTextView"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_marginTop="8dp"
+        android:text="@string/perscribingDoctor"
+        app:layout_constraintStart_toStartOf="@+id/medrefillsEditText"
+        app:layout_constraintTop_toBottomOf="@+id/medrefillsEditText" />
+
+    <EditText
+        android:id="@+id/medperscribingDoctorEditText"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:ems="10"
+        android:inputType="textPersonName"
+        app:layout_constraintStart_toStartOf="@+id/perscibingDoctorLabelTextView"
+        app:layout_constraintTop_toBottomOf="@+id/perscibingDoctorLabelTextView" />
+
 
     <android.support.constraint.Guideline
         android:id="@+id/guideline2"
@@ -145,21 +138,21 @@
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
         android:orientation="horizontal"
-        app:layout_constraintGuide_percent="0.3" />
+        app:layout_constraintGuide_percent="0.2" />
 
     <android.support.constraint.Guideline
         android:id="@+id/guideline5"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
         android:orientation="horizontal"
-        app:layout_constraintGuide_percent="0.47" />
+        app:layout_constraintGuide_percent="0.3" />
 
     <android.support.constraint.Guideline
         android:id="@+id/guideline6"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
         android:orientation="horizontal"
-        app:layout_constraintGuide_percent="0.72" />
+        app:layout_constraintGuide_percent="0.4" />
 
     <android.support.constraint.Guideline
         android:id="@+id/guideline7"
@@ -170,31 +163,27 @@
 
     <ImageButton
         android:id="@+id/bgCancelImageButton"
-        android:layout_width="58dp"
-        android:layout_height="41dp"
+        android:layout_width="60dp"
+        android:layout_height="60dp"
         android:layout_marginStart="8dp"
         android:layout_marginTop="8dp"
-        android:layout_marginEnd="8dp"
         android:layout_marginBottom="8dp"
         android:background="@android:color/background_light"
         app:layout_constraintBottom_toTopOf="@+id/guideline7"
-        app:layout_constraintEnd_toStartOf="@+id/guideline3"
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toTopOf="parent"
         app:srcCompat="@android:drawable/btn_dialog" />
 
     <ImageButton
         android:id="@+id/bgAcceptImageButton"
-        android:layout_width="59dp"
-        android:layout_height="43dp"
-        android:layout_marginStart="8dp"
+        android:layout_width="60dp"
+        android:layout_height="60dp"
         android:layout_marginTop="8dp"
         android:layout_marginEnd="8dp"
         android:layout_marginBottom="8dp"
         android:background="@android:color/background_light"
         app:layout_constraintBottom_toTopOf="@+id/guideline7"
         app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintStart_toStartOf="@+id/guideline2"
         app:layout_constraintTop_toTopOf="parent"
         app:srcCompat="@android:drawable/checkbox_on_background" />
 
@@ -206,7 +195,7 @@
         android:layout_marginTop="8dp"
         android:layout_marginEnd="8dp"
         android:layout_marginBottom="8dp"
-        android:text="@string/editBloodGlucose"
+        android:text="@string/editMedication"
         android:textAlignment="center"
         android:textSize="18sp"
         android:textStyle="bold"
@@ -216,7 +205,7 @@
         app:layout_constraintTop_toTopOf="parent" />
 
     <android.support.constraint.Guideline
-        android:id="@+id/guideline11"
+        android:id="@+id/guideline10"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
         android:orientation="vertical"

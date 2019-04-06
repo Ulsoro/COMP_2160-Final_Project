@@ -9,7 +9,7 @@
     <string name="Contacts">CONTACTS</string>
     <string name="Statistics">STATISTICS</string>
 
-    <!-- Blood Glucose Entries -->
+    <!-- **** Blood Glucose Entries **** -->
     <string name="editBloodGlucose">Add/Edit Blood Glucose</string>
     <string name="bloodSugarLabel">Sugar Concentration: </string>
     <string name="bloodSugarUnits">mmol/L</string>
@@ -61,5 +61,25 @@
     <string name="contactInformationLabel">Contact Information:</string>
     <string name="title_activity_test">test</string>
 
+
+    <!-- **** Blood Pressure Entries **** -->
+
+    <string name="editBloodPressure">Add/Edit Blood Pressure</string>
+
+    <string-array name="armTag">
+        <item>Left</item>
+        <item>Right</item>
+    </string-array>
+
+
+    <!-- **** A1C Entries **** -->
+    <string name="editA1C">Add/Edit A1C</string>
+
+    <!-- **** Medication Entries **** -->
+    <string name="editMedication">Add/Edit Medication</string>
+
+
+    <!-- **** Medical Contact Entries **** -->
+    <string name="editMedicalContact">Add/Edit Medical Contacts</string>
 
 </resources>

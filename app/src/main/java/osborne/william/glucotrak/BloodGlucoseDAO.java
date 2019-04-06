@@ -21,7 +21,7 @@ public interface BloodGlucoseDAO {
     @Delete
     void deleteRecord(BloodGlucoseRecord bloodGlucoseRecord);
 
-    @Query("SELECT * FROM BloodGlucoseTable")
+    @Query("SELECT * FROM BloodGlucoseTable ORDER BY date DESC")
     LiveData<List<BloodGlucoseRecord>> getAllRecords();
 
     //@Query("SELECT * FROM BloodGlucoseTable")

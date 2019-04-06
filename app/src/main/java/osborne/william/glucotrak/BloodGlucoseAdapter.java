@@ -1,24 +1,17 @@
 package osborne.william.glucotrak;
 
 import android.app.AlertDialog;
-import android.arch.lifecycle.ViewModelProviders;
 import android.content.Context;
 import android.content.DialogInterface;
 import android.content.Intent;
 import android.support.v7.widget.RecyclerView;
 import android.text.format.DateFormat;
 import android.view.LayoutInflater;
-import android.view.MotionEvent;
 import android.view.View;
 import android.view.ViewGroup;
 import android.widget.TextView;
-import android.widget.Toast;
 
-import java.util.Calendar;
-import java.util.Date;
 import java.util.List;
-
-import static android.support.v4.app.ActivityCompat.startActivityForResult;
 
 public class BloodGlucoseAdapter extends RecyclerView.Adapter<BloodGlucoseAdapter.BloodGlucoseViewHolder> {
 
@@ -29,12 +22,14 @@ public class BloodGlucoseAdapter extends RecyclerView.Adapter<BloodGlucoseAdapte
         private TextView dateTextView;
         private TextView relativeTimeTextView;
         private TextView bloodGlucoseReadingTextView;
+        private TextView bloodGlucoseNotes;
 
         private BloodGlucoseViewHolder(View itemView) {
             super(itemView);
-            dateTextView = itemView.findViewById(R.id.bgDateTextView);
+            dateTextView = itemView.findViewById(R.id.a1cDateEditText);
             relativeTimeTextView = itemView.findViewById(R.id.bgRelativeTimeTextView);
             bloodGlucoseReadingTextView = itemView.findViewById(R.id.bgBloodGlucoseTextView);
+            bloodGlucoseNotes = itemView.findViewById(R.id.bgRowNotesTextView);
         }
     }
 
@@ -59,11 +54,13 @@ public class BloodGlucoseAdapter extends RecyclerView.Adapter<BloodGlucoseAdapte
             holder.dateTextView.setText(DateFormat.format("dd-MM-yyyy hh:mm a", current.getDate()).toString());
             holder.relativeTimeTextView.setText(current.getRelativeTime());
             holder.bloodGlucoseReadingTextView.setText(String.valueOf(current.getBloodSugarConcentration()));
+            holder.bloodGlucoseNotes.setText(current.getNotes());
         } else {
             // Covers the case of data not being ready yet.
             holder.dateTextView.setText("No Date");
             holder.relativeTimeTextView.setText("No Relative Time");
             holder.bloodGlucoseReadingTextView.setText("No Glucose Reading");
+            holder.bloodGlucoseNotes.setText("No Notes");
         }
 
         holder.itemView.setOnClickListener(new View.OnClickListener() {

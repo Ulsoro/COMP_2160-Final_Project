@@ -51,6 +51,8 @@ public class MainActivity extends AppCompatActivity {
         });
     }
 
+
+    // Used by The BloodGlucoseAdapter to remove an item from the database
     public static void removeRecord(BloodGlucoseRecord bloodGlucoseRecord) {
 
         bloodGlucoseViewModel.deleteRecord(bloodGlucoseRecord);

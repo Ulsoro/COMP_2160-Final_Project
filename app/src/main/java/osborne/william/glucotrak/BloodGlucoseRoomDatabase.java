@@ -5,7 +5,7 @@ import android.arch.persistence.room.Room;
 import android.arch.persistence.room.RoomDatabase;
 import android.content.Context;
 
-@Database(entities = {BloodGlucoseRecord.class}, version = 1)
+@Database(entities = {BloodGlucoseRecord.class}, version = 1, exportSchema = false)
 public abstract class BloodGlucoseRoomDatabase extends RoomDatabase {
 
     public abstract BloodGlucoseDAO bloodGlucoseDAO();
