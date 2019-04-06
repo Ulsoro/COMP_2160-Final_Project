@@ -15,6 +15,7 @@ import android.widget.Button;
 import android.widget.Toast;
 
 import java.util.List;
+import java.util.Set;
 
 public class MainActivity extends AppCompatActivity {
 
@@ -31,10 +32,18 @@ public class MainActivity extends AppCompatActivity {
     private static BloodGlucoseViewModel bloodGlucoseViewModel;
     private static BPViewModel bpViewModel;
 
-    int currentButton;
+    int currentButton; // Tracks which menu is currently in use
+                       // 1 - Glucose
+                       // 2 - Pressure
+                       // 3 - A1C
+                       // 4 - Medications
+                       // 5 - Medical Contacts
 
     SharedPreferences sharedPreferences;
     SharedPreferences.Editor editor;
+
+    static BloodGlucoseAdapter bgAdapter;
+    static BPAdapter bpAdapter;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -64,23 +73,42 @@ public class MainActivity extends AppCompatActivity {
         fab.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
-                 startActivity(new Intent(MainActivity.this, EditBloodGlucoseActivity.class));
+                switch (currentButton) {
+                    case 1:
+                        startActivity(new Intent(MainActivity.this, EditBloodGlucoseActivity.class));
+                        break;
+                    case 2:
+                        startActivity(new Intent(MainActivity.this, EditBloodPressureActivity.class));
+                        break;
+
+                    // Buttons not currently implemented
+                    case 3:
+                    case 4:
+                    case 5:
+                    default:
+                        break;
+                }
+
             }
         });
 
-        // Statistics Button Listener
-        mainStatsButton.setOnClickListener(new View.OnClickListener() {
-            @Override
-            public void onClick(View v) {
-                Toast.makeText(getApplicationContext(), "Statistics not yet Implemented", Toast.LENGTH_LONG).show();
-            }
-        });
+        // Menu Selection Listeners
+        mainStatsButton.setOnClickListener(menuListener);
+        mainGlucoseButton.setOnClickListener(menuListener);
+        mainPressureButton.setOnClickListener(menuListener);
+        mainA1CButton.setOnClickListener(menuListener);
+        mainMedicationButton.setOnClickListener(menuListener);
+        mainMedicalContactButton.setOnClickListener(menuListener);
 
-        // Set up RecyclerView Adapter
+
+
+        // Set up RecyclerView Adapters
         recyclerView = findViewById(R.id.mainRecycler);
-        final BloodGlucoseAdapter adapter = new BloodGlucoseAdapter(this);
-        final BPAdapter bpAdapter = new BPAdapter(this);
-        recyclerView.setAdapter(adapter);
+
+        bgAdapter = new BloodGlucoseAdapter(this);
+        bpAdapter = new BPAdapter(this);
+
+        recyclerView.setAdapter(bgAdapter);
         recyclerView.setLayoutManager(new LinearLayoutManager(this));
 
         bloodGlucoseViewModel = ViewModelProviders.of(this).get(BloodGlucoseViewModel.class);
@@ -88,7 +116,7 @@ public class MainActivity extends AppCompatActivity {
         bloodGlucoseViewModel.getAllRecords().observe(this, new Observer<List<BloodGlucoseRecord>>() {
             @Override
             public void onChanged(@Nullable List<BloodGlucoseRecord> bloodGlucoseRecords) {
-                adapter.setBloodGlucose(bloodGlucoseRecords);
+                bgAdapter.setBloodGlucose(bloodGlucoseRecords);
             }
         });
 
@@ -123,4 +151,52 @@ public class MainActivity extends AppCompatActivity {
         editor.putInt("MenuSelection", currentButton);
         editor.apply();
     }
+
+
+    // Lstener for the menu selection
+    private View.OnClickListener menuListener = new View.OnClickListener() {
+        @Override
+        public void onClick(View btn) {
+
+            Button clickedButton =(Button) btn;
+
+            // Set menu items to default color
+            mainGlucoseButton.setTextColor(getResources().getColor(R.color.colorBlack));
+            mainPressureButton.setTextColor(getResources().getColor(R.color.colorBlack));
+
+            // Different actions depending on which button is selected
+            switch (btn.getId()) {
+
+                case R.id.mainGlucoseButton:
+                    if (currentButton != 1) {
+                        // A Button other than Glucose is Selected
+                        mainGlucoseButton.setTextColor(getResources().getColor(R.color.colorPrimary));
+                        currentButton = 1;
+
+                        recyclerView.setAdapter(bgAdapter);
+                    }
+                    break;
+
+                case R.id.mainPressureButton:
+                    if (currentButton != 2) {
+                        // A Button other than Pressure is Selected
+                        mainPressureButton.setTextColor(getResources().getColor(R.color.colorPrimary));
+                        currentButton = 2;
+
+                        recyclerView.setAdapter(bpAdapter);
+                    }
+                    break;
+
+                // Buttons that are not yet implemented
+                case R.id.mainStatsButton:
+                case R.id.mainA1CButton:
+                case R.id.mainMedicationButton:
+                case R.id.mainContactButton:
+                default:
+                    Toast.makeText(getApplicationContext(), "This Feature is not yet implemented", Toast.LENGTH_LONG).show();
+                    break;
+            }
+
+        }
+    };
 }

@@ -67,6 +67,8 @@ public class EditBloodGlucoseActivity extends AppCompatActivity {
 
             bgConcentration.setText(String.valueOf(intent.getDoubleExtra("bgcon", 0)));
 
+            bgNote.setText(intent.getStringExtra("notes"));
+
             // Determine Relative Date
             int spinnerIndex = 0;
             String spinnerCompare = intent.getStringExtra("relativeTime");

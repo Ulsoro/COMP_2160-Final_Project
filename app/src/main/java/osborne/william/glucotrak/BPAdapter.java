@@ -81,6 +81,7 @@ public class BPAdapter extends RecyclerView.Adapter<BPAdapter.BPViewHolder> {
                 intent.putExtra("existing", true);
                 intent.putExtra("id", current.getId());
                 intent.putExtra("date", current.getDate());
+                intent.putExtra("arm", current.getArm());
                 intent.putExtra("notes", current.getNotes());
                 intent.putExtra("systolic", current.getSystolic());
                 intent.putExtra("diastolic", current.getDiastolic());

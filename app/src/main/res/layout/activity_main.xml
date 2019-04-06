@@ -28,7 +28,7 @@
                 android:id="@+id/mainStatsButton"
                 style="@style/Widget.AppCompat.Button.Borderless"
                 android:layout_width="wrap_content"
-                android:layout_height="wrap_content"
+                android:layout_height="match_parent"
                 android:text="@string/Statistics"
                 android:textColor="@android:color/darker_gray" />
 
@@ -36,7 +36,7 @@
                 android:id="@+id/mainGlucoseButton"
                 style="@style/Widget.AppCompat.Button.Borderless"
                 android:layout_width="wrap_content"
-                android:layout_height="wrap_content"
+                android:layout_height="match_parent"
                 android:text="@string/Glucose"
                 android:textAllCaps="false"
                 android:textColor="@color/colorPrimary" />
@@ -45,7 +45,7 @@
                 android:id="@+id/mainPressureButton"
                 style="@style/Widget.AppCompat.Button.Borderless"
                 android:layout_width="wrap_content"
-                android:layout_height="wrap_content"
+                android:layout_height="match_parent"
                 android:text="@string/Pressure"
                 android:textColor="@android:color/black" />
 
@@ -53,7 +53,7 @@
                 android:id="@+id/mainA1CButton"
                 style="@style/Widget.AppCompat.Button.Borderless"
                 android:layout_width="wrap_content"
-                android:layout_height="wrap_content"
+                android:layout_height="match_parent"
                 android:text="@string/A1C"
                 android:textColor="@android:color/darker_gray" />
 
@@ -62,7 +62,7 @@
                 android:id="@+id/mainMedicationButton"
                 style="@style/Widget.AppCompat.Button.Borderless"
                 android:layout_width="wrap_content"
-                android:layout_height="wrap_content"
+                android:layout_height="match_parent"
                 android:text="@string/Medication"
                 android:textColor="@android:color/darker_gray" />
 
@@ -70,7 +70,7 @@
                 android:id="@+id/mainContactButton"
                 style="@style/Widget.AppCompat.Button.Borderless"
                 android:layout_width="wrap_content"
-                android:layout_height="wrap_content"
+                android:layout_height="match_parent"
                 android:text="@string/Contacts"
                 android:textColor="@android:color/darker_gray" />
 

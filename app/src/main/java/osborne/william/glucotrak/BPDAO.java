@@ -21,6 +21,6 @@ public interface BPDAO {
     @Delete
     void deleteRecord(BPRecord bpRecord);
 
-    @Query("SELECT * FROM BloodPressureTable ORDER BY DESC")
+    @Query("SELECT * FROM BloodPressureTable ORDER BY date DESC")
     LiveData<List<BPRecord>> getAllRecords();
 }
