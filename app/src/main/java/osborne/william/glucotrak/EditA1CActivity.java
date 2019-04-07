@@ -82,7 +82,14 @@ public class EditA1CActivity extends AppCompatActivity {
             @Override
             public void onClick(View v) {
 
-                double a1cReading = Double.parseDouble(a1cAverageSugarConcentrationEditText.getText().toString());
+                double a1cReading;
+                try {
+                    a1cReading = Double.parseDouble(a1cAverageSugarConcentrationEditText.getText().toString());
+                }
+                catch (NumberFormatException numException) {
+                    a1cReading = 0.0;
+                }
+
                 long date = myCalendar.getTimeInMillis();
                 String note = a1cNotesEditText.getText().toString();
 

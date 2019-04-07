@@ -4,9 +4,8 @@ import android.app.DatePickerDialog;
 import android.app.TimePickerDialog;
 import android.arch.lifecycle.ViewModelProviders;
 import android.content.Intent;
-import android.provider.ContactsContract;
-import android.support.v7.app.AppCompatActivity;
 import android.os.Bundle;
+import android.support.v7.app.AppCompatActivity;
 import android.view.View;
 import android.widget.DatePicker;
 import android.widget.EditText;
@@ -98,8 +97,23 @@ public class EditBloodPressureActivity extends AppCompatActivity {
             @Override
             public void onClick(View v) {
 
-                int systolic = Integer.parseInt(systolicPressureEditText.getText().toString());
-                int diastolic = Integer.parseInt(diastolicPressureEditText.getText().toString());
+                int systolic;
+                try {
+                    systolic = Integer.parseInt(systolicPressureEditText.getText().toString());
+                }
+                catch (NumberFormatException ex) {
+                    systolic = 0;
+                }
+
+
+                int diastolic;
+                try {
+                    diastolic = Integer.parseInt(diastolicPressureEditText.getText().toString());
+                }
+                catch (NumberFormatException ex) {
+                    diastolic = 0;
+                }
+
                 String arm = armSpinner.getSelectedItem().toString();
                 long date = myCalendar.getTimeInMillis();
                 String note = bpNotesEditText.getText().toString();

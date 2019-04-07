@@ -94,7 +94,16 @@ public class EditBloodGlucoseActivity extends AppCompatActivity {
             @Override
             public void onClick(View v) {
 
-                double bgCon = Double.parseDouble(bgConcentration.getText().toString());
+                double bgCon;
+
+                try {
+                    bgCon = Double.parseDouble(bgConcentration.getText().toString());
+                }
+                catch (NumberFormatException ex) {
+                    bgCon = 0.0;
+                }
+
+
                 String bgRTime = bgRelTime.getSelectedItem().toString();
                 long time = myCalendar.getTimeInMillis();
                 String note = bgNote.getText().toString();
