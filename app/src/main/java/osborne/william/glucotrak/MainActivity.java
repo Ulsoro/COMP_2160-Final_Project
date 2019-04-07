@@ -114,6 +114,7 @@ public class MainActivity extends AppCompatActivity {
         bpAdapter = new BPAdapter(this);
         a1CAdapter = new A1CAdapter(this);
 
+        // Load the lost recycler adapter that the user viewed
         switch (currentButton) {
             case 1:
                 recyclerView.setAdapter(bgAdapter);
@@ -136,6 +137,8 @@ public class MainActivity extends AppCompatActivity {
 
         recyclerView.setLayoutManager(new LinearLayoutManager(this));
 
+
+        // Set up the adapters and view models for each list
         bloodGlucoseViewModel = ViewModelProviders.of(this).get(BloodGlucoseViewModel.class);
 
         bloodGlucoseViewModel.getAllRecords().observe(this, new Observer<List<BloodGlucoseRecord>>() {
@@ -144,7 +147,6 @@ public class MainActivity extends AppCompatActivity {
                 bgAdapter.setBloodGlucose(bloodGlucoseRecords);
             }
         });
-
 
         bpViewModel = ViewModelProviders.of(this).get(BPViewModel.class);
 
@@ -174,19 +176,18 @@ public class MainActivity extends AppCompatActivity {
     }
 
 
-    // Lstener for the menu selection
+    // Listener for the menu selection
     private View.OnClickListener menuListener = new View.OnClickListener() {
         @Override
         public void onClick(View btn) {
-
-            Button clickedButton =(Button) btn;
 
             // Set menu items to default color
             mainGlucoseButton.setTextColor(getResources().getColor(R.color.colorBlack));
             mainPressureButton.setTextColor(getResources().getColor(R.color.colorBlack));
             mainA1CButton.setTextColor(getResources().getColor(R.color.colorBlack));
 
-            // Different actions depending on which button is selected
+            // Switch the recyclerview adapter to the correct menu choice
+            // Change the color of the currently selected menu item to show it is selected
             switch (btn.getId()) {
 
                 case R.id.mainGlucoseButton:
@@ -249,4 +250,5 @@ public class MainActivity extends AppCompatActivity {
 
         a1cViewModel.deleteRecord(a1CRecord);
     }
+
 }

@@ -8,7 +8,7 @@ import android.widget.TextView;
 
 
 
-/* NOT CURRENTLY USED  */
+/* ***** NOT CURRENTLY USED  ******* */
 
 public class StatisticsActivity extends AppCompatActivity {
 
