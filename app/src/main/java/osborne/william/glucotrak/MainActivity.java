@@ -15,7 +15,6 @@ import android.widget.Button;
 import android.widget.Toast;
 
 import java.util.List;
-import java.util.Set;
 
 public class MainActivity extends AppCompatActivity {
 
@@ -31,6 +30,7 @@ public class MainActivity extends AppCompatActivity {
 
     private static BloodGlucoseViewModel bloodGlucoseViewModel;
     private static BPViewModel bpViewModel;
+    private static A1CViewModel a1cViewModel;
 
     int currentButton; // Tracks which menu is currently in use
                        // 1 - Glucose
@@ -42,8 +42,10 @@ public class MainActivity extends AppCompatActivity {
     SharedPreferences sharedPreferences;
     SharedPreferences.Editor editor;
 
+    // Recyclerview adapters for each section
     static BloodGlucoseAdapter bgAdapter;
     static BPAdapter bpAdapter;
+    static A1CAdapter a1CAdapter;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -80,9 +82,12 @@ public class MainActivity extends AppCompatActivity {
                     case 2:
                         startActivity(new Intent(MainActivity.this, EditBloodPressureActivity.class));
                         break;
+                    case 3:
+                        startActivity(new Intent(MainActivity.this, EditA1CActivity.class));
+                        break;
 
                     // Buttons not currently implemented
-                    case 3:
+
                     case 4:
                     case 5:
                     default:
@@ -107,8 +112,28 @@ public class MainActivity extends AppCompatActivity {
 
         bgAdapter = new BloodGlucoseAdapter(this);
         bpAdapter = new BPAdapter(this);
+        a1CAdapter = new A1CAdapter(this);
 
-        recyclerView.setAdapter(bgAdapter);
+        switch (currentButton) {
+            case 1:
+                recyclerView.setAdapter(bgAdapter);
+                mainGlucoseButton.setTextColor(getResources().getColor(R.color.colorPrimary));
+                break;
+            case 2:
+                recyclerView.setAdapter(bpAdapter);
+                mainPressureButton.setTextColor(getResources().getColor(R.color.colorPrimary));
+                break;
+            case 3:
+                recyclerView.setAdapter(a1CAdapter);
+                mainA1CButton.setTextColor(getResources().getColor(R.color.colorPrimary));
+                break;
+            case 4:
+            case 5:
+            default:
+                break;
+        }
+
+
         recyclerView.setLayoutManager(new LinearLayoutManager(this));
 
         bloodGlucoseViewModel = ViewModelProviders.of(this).get(BloodGlucoseViewModel.class);
@@ -129,19 +154,15 @@ public class MainActivity extends AppCompatActivity {
                 bpAdapter.setBP(bpRecords);
             }
         });
-    }
 
+        a1cViewModel = ViewModelProviders.of(this).get(A1CViewModel.class);
 
-    // Used by The BloodGlucoseAdapter to remove an item from the database
-    public static void removeRecord(BloodGlucoseRecord bloodGlucoseRecord) {
-
-        bloodGlucoseViewModel.deleteRecord(bloodGlucoseRecord);
-    }
-
-    // User to remove Blood Pressure records
-    public static void removeRecord(BPRecord bpRecord) {
-
-        bpViewModel.deleteRecord(bpRecord);
+        a1cViewModel.getAllRecords().observe(this, new Observer<List<A1CRecord>>() {
+            @Override
+            public void onChanged(@Nullable List<A1CRecord> a1CRecords) {
+                a1CAdapter.setA1C(a1CRecords);
+            }
+        });
     }
 
     @Override
@@ -163,6 +184,7 @@ public class MainActivity extends AppCompatActivity {
             // Set menu items to default color
             mainGlucoseButton.setTextColor(getResources().getColor(R.color.colorBlack));
             mainPressureButton.setTextColor(getResources().getColor(R.color.colorBlack));
+            mainA1CButton.setTextColor(getResources().getColor(R.color.colorBlack));
 
             // Different actions depending on which button is selected
             switch (btn.getId()) {
@@ -170,26 +192,35 @@ public class MainActivity extends AppCompatActivity {
                 case R.id.mainGlucoseButton:
                     if (currentButton != 1) {
                         // A Button other than Glucose is Selected
-                        mainGlucoseButton.setTextColor(getResources().getColor(R.color.colorPrimary));
                         currentButton = 1;
 
                         recyclerView.setAdapter(bgAdapter);
                     }
+                    mainGlucoseButton.setTextColor(getResources().getColor(R.color.colorPrimary));
                     break;
 
                 case R.id.mainPressureButton:
                     if (currentButton != 2) {
                         // A Button other than Pressure is Selected
-                        mainPressureButton.setTextColor(getResources().getColor(R.color.colorPrimary));
                         currentButton = 2;
 
                         recyclerView.setAdapter(bpAdapter);
                     }
+                    mainPressureButton.setTextColor(getResources().getColor(R.color.colorPrimary));
+                    break;
+
+                case R.id.mainA1CButton:
+                    if (currentButton != 3) {
+                        // A button other than A1C is currently selected
+                        currentButton = 3;
+
+                        recyclerView.setAdapter(a1CAdapter);
+                    }
+                    mainA1CButton.setTextColor(getResources().getColor(R.color.colorPrimary));
                     break;
 
                 // Buttons that are not yet implemented
                 case R.id.mainStatsButton:
-                case R.id.mainA1CButton:
                 case R.id.mainMedicationButton:
                 case R.id.mainContactButton:
                 default:
@@ -199,4 +230,23 @@ public class MainActivity extends AppCompatActivity {
 
         }
     };
+
+
+    // Used by The BloodGlucoseAdapter to remove an item from the database
+    public static void removeRecord(BloodGlucoseRecord bloodGlucoseRecord) {
+
+        bloodGlucoseViewModel.deleteRecord(bloodGlucoseRecord);
+    }
+
+    // Used to remove Blood Pressure records
+    public static void removeRecord(BPRecord bpRecord) {
+
+        bpViewModel.deleteRecord(bpRecord);
+    }
+
+    // Used to remove A1C records
+    public static void removeRecord(A1CRecord a1CRecord) {
+
+        a1cViewModel.deleteRecord(a1CRecord);
+    }
 }

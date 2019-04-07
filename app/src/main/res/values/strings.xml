@@ -9,6 +9,8 @@
     <string name="Contacts">CONTACTS</string>
     <string name="Statistics">STATISTICS</string>
 
+    <string name="HoldDelete">Press and Hold to Delete</string>
+
     <!-- **** Blood Glucose Entries **** -->
     <string name="editBloodGlucose">Add/Edit Blood Glucose</string>
     <string name="bloodSugarLabel">Sugar Concentration: </string>

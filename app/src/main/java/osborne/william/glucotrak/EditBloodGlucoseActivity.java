@@ -47,7 +47,7 @@ public class EditBloodGlucoseActivity extends AppCompatActivity {
 
         bgConcentration = (EditText) findViewById(R.id.bgConcentrationEditText);
         bgRelTime = (Spinner) findViewById(R.id.bgRelativeTimeMeasuredSpinner);
-        bgDate = (TextView) findViewById(R.id.bgRowDateEditText);
+        bgDate = (TextView) findViewById(R.id.a1cDateEditText);
         bgTime = (TextView) findViewById(R.id.bgTimeEditText);
         bgNote = (EditText) findViewById(R.id.bgNotesEditText);
 

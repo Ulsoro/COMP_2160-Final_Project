@@ -13,78 +13,70 @@ import android.widget.TextView;
 
 import java.util.List;
 
-public class BPAdapter extends RecyclerView.Adapter<BPAdapter.BPViewHolder> {
+public class A1CAdapter extends RecyclerView.Adapter<A1CAdapter.A1CViewHolder> {
 
 
-    class BPViewHolder extends RecyclerView.ViewHolder {
+    class A1CViewHolder extends RecyclerView.ViewHolder {
 
-        private TextView bprowDate;
-        private TextView bprowNote;
-        private TextView bprowSystolic;
-        private TextView bprowDiastolic;
+        private TextView a1cRowDate;
+        private TextView a1cRowNotes;
+        private TextView a1cRowValue;
 
-        private BPViewHolder(View itemView) {
+        private A1CViewHolder(View itemView) {
             super(itemView);
-            bprowDate = itemView.findViewById(R.id.a1cRowDate);
-            bprowNote = itemView.findViewById(R.id.bpRowNotes);
-            bprowSystolic = itemView.findViewById(R.id.a1cRowValue);
-            bprowDiastolic = itemView.findViewById(R.id.bprowDiastolic);
-        }
 
+            a1cRowDate = itemView.findViewById(R.id.a1cRowDate);
+            a1cRowNotes = itemView.findViewById(R.id.a1cRowNotes);
+            a1cRowValue = itemView.findViewById(R.id.a1cRowValue);
+        }
     }
 
     private final LayoutInflater mInflater;
-    private List<BPRecord> mBPList; // Cached copy of Blood Pressure Readings
+    private List<A1CRecord> mList; // Cached copy of A1C Readings
 
-    BPAdapter(Context context) { mInflater = LayoutInflater.from(context); }
-
-    @Override
-    public BPViewHolder onCreateViewHolder(ViewGroup parent, int viewType) {
-        final View itemView = mInflater.inflate(R.layout.blood_pressure_row, parent, false);
-        return new BPViewHolder(itemView);
+    A1CAdapter(Context context) {
+        mInflater = LayoutInflater.from(context);
     }
 
-
-
-
-
-
+    @Override
+    public A1CViewHolder onCreateViewHolder(ViewGroup parent, int viewType) {
+        final View itemView = mInflater.inflate(R.layout.a1c_row, parent, false);
+        return new A1CViewHolder(itemView);
+    }
 
     @Override
-    public void onBindViewHolder(final BPViewHolder holder, int position) {
+    public void onBindViewHolder(final A1CViewHolder holder, int position) {
 
-        final BPRecord current = mBPList.get(position);
+        final A1CRecord current = mList.get(position);
 
-        if (mBPList != null) {
+        if (mList != null) {
 
-            holder.bprowDate.setText(DateFormat.format("dd-MMM-yyyy h:mm a", current.getDate()).toString());
-            holder.bprowSystolic.setText(String.valueOf(current.getSystolic()));
-            holder.bprowDiastolic.setText(String.valueOf(current.getDiastolic()));
-            holder.bprowNote.setText(current.getNotes());
+            holder.a1cRowDate.setText(DateFormat.format("dd-MMM-yyyy h:mm a", current.getDate()).toString());
+            holder.a1cRowNotes.setText(current.getNotes());
+            holder.a1cRowValue.setText(String.valueOf(current.getA1cReading()));
+
         } else {
             // Covers the case of data not being ready yet.
-            holder.bprowDate.setText("No Date");
-            holder.bprowSystolic.setText("No Systolic");
-            holder.bprowDiastolic.setText("No Diastolic");
-            holder.bprowNote.setText("No Notes");
+            holder.a1cRowDate.setText("No Date");
+            holder.a1cRowValue.setText("No A1C");
+            holder.a1cRowNotes.setText("No Notes");
         }
 
         holder.itemView.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
                 Context context = v.getContext();
-                Intent intent = new Intent(context, EditBloodPressureActivity.class);
+                Intent intent = new Intent(context, EditA1CActivity.class);
                 intent.putExtra("existing", true);
                 intent.putExtra("id", current.getId());
                 intent.putExtra("date", current.getDate());
-                intent.putExtra("arm", current.getArm());
+                intent.putExtra("a1c", current.getA1cReading());
                 intent.putExtra("notes", current.getNotes());
-                intent.putExtra("systolic", current.getSystolic());
-                intent.putExtra("diastolic", current.getDiastolic());
 
                 context.startActivity(intent);
             }
         });
+
 
         holder.itemView.setOnLongClickListener(new View.OnLongClickListener() {
             @Override
@@ -113,10 +105,13 @@ public class BPAdapter extends RecyclerView.Adapter<BPAdapter.BPViewHolder> {
                 return false;
             }
         });
+
+
+
     }
 
-    void setBP(List<BPRecord> bgList){
-        mBPList = bgList;
+    void setA1C(List<A1CRecord> a1cList){
+        mList = a1cList;
         notifyDataSetChanged();
     }
 
@@ -124,11 +119,9 @@ public class BPAdapter extends RecyclerView.Adapter<BPAdapter.BPViewHolder> {
     // mWords has not been updated (means initially, it's null, and we can't return null).
     @Override
     public int getItemCount() {
-        if (mBPList != null)
-            return mBPList.size();
+        if (mList != null)
+            return mList.size();
         else return 0;
     }
 
 }
-
-

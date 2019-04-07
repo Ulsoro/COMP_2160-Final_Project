@@ -26,7 +26,7 @@ public class BloodGlucoseAdapter extends RecyclerView.Adapter<BloodGlucoseAdapte
 
         private BloodGlucoseViewHolder(View itemView) {
             super(itemView);
-            dateTextView = itemView.findViewById(R.id.bgRowDateEditText);
+            dateTextView = itemView.findViewById(R.id.a1cDateEditText);
             relativeTimeTextView = itemView.findViewById(R.id.bgRelativeTimeTextView);
             bloodGlucoseReadingTextView = itemView.findViewById(R.id.bgBloodGlucoseTextView);
             bloodGlucoseNotes = itemView.findViewById(R.id.bgRowNotesTextView);

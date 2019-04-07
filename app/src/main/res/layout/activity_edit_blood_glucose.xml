@@ -71,7 +71,7 @@
         app:layout_constraintTop_toTopOf="@+id/guideline5" />
 
     <EditText
-        android:id="@+id/bgRowDateEditText"
+        android:id="@+id/a1cDateEditText"
         android:layout_width="0dp"
         android:layout_height="wrap_content"
         android:layout_marginStart="8dp"
@@ -98,10 +98,10 @@
         android:ems="10"
         android:focusable="false"
         android:textAlignment="center"
-        app:layout_constraintBottom_toBottomOf="@+id/bgRowDateEditText"
+        app:layout_constraintBottom_toBottomOf="@+id/a1cDateEditText"
         app:layout_constraintEnd_toStartOf="@+id/guideline2"
         app:layout_constraintStart_toStartOf="@+id/guideline10"
-        app:layout_constraintTop_toTopOf="@+id/bgRowDateEditText"
+        app:layout_constraintTop_toTopOf="@+id/a1cDateEditText"
         app:layout_constraintVertical_bias="1.0" />
 
     <TextView

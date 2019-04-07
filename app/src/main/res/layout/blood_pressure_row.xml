@@ -9,7 +9,7 @@
     android:orientation="vertical">
 
     <TextView
-        android:id="@+id/bprowDate"
+        android:id="@+id/a1cRowDate"
         android:layout_width="0dp"
         android:layout_height="wrap_content"
         android:layout_marginStart="8dp"
@@ -28,7 +28,7 @@
         app:layout_constraintGuide_percent="0.7" />
 
     <TextView
-        android:id="@+id/bprowSystolic"
+        android:id="@+id/a1cRowValue"
         android:layout_width="0dp"
         android:layout_height="wrap_content"
         android:layout_marginStart="8dp"
@@ -55,7 +55,7 @@
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintHorizontal_bias="0.0"
         app:layout_constraintStart_toStartOf="@+id/guideline8"
-        app:layout_constraintTop_toBottomOf="@+id/bprowSystolic" />
+        app:layout_constraintTop_toBottomOf="@+id/a1cRowValue" />
 
     <TextView
         android:id="@+id/bpRowNotes"
@@ -69,5 +69,5 @@
         app:layout_constraintBottom_toBottomOf="parent"
         app:layout_constraintEnd_toStartOf="@+id/guideline8"
         app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toBottomOf="@+id/bprowDate" />
+        app:layout_constraintTop_toBottomOf="@+id/a1cRowDate" />
 </android.support.constraint.ConstraintLayout>

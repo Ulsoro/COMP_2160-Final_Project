@@ -68,7 +68,6 @@ public class EditBloodPressureActivity extends AppCompatActivity {
             // Load the saved time into the calendar
             myCalendar.setTimeInMillis(intent.getLongExtra("date", 0));
 
-            //bgConcentration.setText(String.valueOf(intent.getDoubleExtra("bgcon", 0)));
             systolicPressureEditText.setText(String.valueOf(intent.getIntExtra("systolic", 0)));
             diastolicPressureEditText.setText(String.valueOf(intent.getIntExtra("diastolic", 0)));
             bpNotesEditText.setText(intent.getStringExtra("notes"));
