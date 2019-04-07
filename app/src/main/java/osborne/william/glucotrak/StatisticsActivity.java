@@ -1,9 +1,14 @@
 package osborne.william.glucotrak;
 
-import android.arch.lifecycle.ViewModelProviders;
-import android.support.v7.app.AppCompatActivity;
 import android.os.Bundle;
+import android.support.v7.app.AppCompatActivity;
 import android.widget.TextView;
+
+
+
+
+
+/* NOT CURRENTLY USED  */
 
 public class StatisticsActivity extends AppCompatActivity {
 
@@ -16,7 +21,7 @@ public class StatisticsActivity extends AppCompatActivity {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_statistics);
 
-        test1 = (TextView) findViewById(R.id.allAvgtextView);
+        test1 = findViewById(R.id.allAvgtextView);
 
 
 
