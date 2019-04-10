@@ -165,7 +165,7 @@ public class EditBloodPressureActivity extends AppCompatActivity {
                 mTimePicker = new TimePickerDialog(EditBloodPressureActivity.this, new TimePickerDialog.OnTimeSetListener() {
                     @Override
                     public void onTimeSet(TimePicker timePicker, int selectedHour, int selectedMinute) {
-                        myCalendar.set(Calendar.HOUR, selectedHour);
+                        myCalendar.set(Calendar.HOUR_OF_DAY, selectedHour);
                         myCalendar.set(Calendar.MINUTE, selectedMinute);
                         updateLabel();
                     }
